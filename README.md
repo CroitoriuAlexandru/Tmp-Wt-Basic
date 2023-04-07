@@ -12,7 +12,7 @@ cp /usr/local/lib/libwt*.so.* /usr/lib/
 ~~~
 
 ## Build / Run
-You can build and ru this via makefile
+You can build and run this via makefile
 
 ### Custom Theme
 The theme is implemented in "Theme" class and its set as the theme of the app
