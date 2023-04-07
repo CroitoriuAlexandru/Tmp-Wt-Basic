@@ -1,0 +1,4 @@
+.vscode
+App
+/src/obj/*.o
+*.d
