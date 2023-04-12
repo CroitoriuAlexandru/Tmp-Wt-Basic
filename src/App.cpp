@@ -25,21 +25,23 @@ void App::createNavigation()
 	contentsStack_->addStyleClass("contents");
 
 	auto mainMenu_ = navigation_->addMenu(std::make_unique<Wt::WMenu>(contentsStack_));
-	// mainMenu_->addStyleClass("me-auto");
-	// mainMenu_->setInternalPathEnabled();
+	mainMenu_->setInternalPathEnabled();
 
 	// create pages content
 	auto pageOne = std::make_unique<PageOne>();
 	auto pageTwo = std::make_unique<PageTwo>();
 
 	// create menu items 
-	auto menuItemOne = std::make_unique<Wt::WMenuItem>("PageOne");
-	auto menuItemTwo = std::make_unique<Wt::WMenuItem>("PageTwo");
+	auto menuItemOne = std::make_unique<Wt::WMenuItem>("Page One", std::move(pageOne));
+	auto menuItemTwo = std::make_unique<Wt::WMenuItem>("Page Two", std::move(pageTwo));
+
+	menuItemOne->setPathComponent("page_one");
+	menuItemTwo->setPathComponent("page_two");
 
 	// add pages to stack
-	mainMenu_->addItem("one", std::move(pageOne))->setLink(Wt::WLink(Wt::LinkType::InternalPath, "/PageOne"));
-	mainMenu_->addItem("two", std::move(pageTwo))->setLink(Wt::WLink(Wt::LinkType::InternalPath, "/PageTwo"));
+	mainMenu_->addItem(std::move(menuItemOne));
+	mainMenu_->addItem(std::move(menuItemTwo));
 
 	// default starting page
-	Wt::WApplication::instance()->setInternalPath("/PageOne`", true);
+	Wt::WApplication::instance()->setInternalPath("/page_two", true);
 }
