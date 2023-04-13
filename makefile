@@ -3,7 +3,7 @@ CC = g++
 CXXFLAGS = -std=c++14 -I. -DICE_CPP11_MAPPING -g
 
 # Makefile settings
-APPNAME = App
+APPNAME = app
 EXT = .cpp
 SRCDIR = ./src
 OBJDIR = ./src/obj

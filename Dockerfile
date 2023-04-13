@@ -1,4 +1,4 @@
-FROM ubuntu:latest as wt
+FROM ubuntu:latest as builder
 
 # install necesary tools
 RUN apt-get update && apt-get install -y \
@@ -16,27 +16,12 @@ RUN git clone https://github.com/emweb/wt.git wt && \
     cmake ../ && \
     make && \
     make install 
-    
-    ### options for instaling wt ---> 
-    #cmake .. \
-      #-GNinja \
-      #-DCMAKE_CXX_STANDARD=17 \
-      #-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-      #-DWT_WRASTERIMAGE_IMPLEMENTATION=GraphicsMagick \
-      #-DENABLE_SQLITE=OFF \
-      #-DENABLE_POSTGRES=ON \
-      #-DBUILD_EXAMPLES=OFF \
-      #-DBUILD_TESTS=OFF \
-      #-DENABLE_LIBWTTEST=OFF \
-      #-DBOOST_PREFIX=/boost/install-dir \
-      #-DCMAKE_INSTALL_PREFIX=/wt/install-dir && \
 
-# copy wt lib from usr/local/lib to usr'lib
 RUN cp /usr/local/lib/libwt*.so.* /usr/lib/
 
-RUN git clone https://github.com/CroitoriuAlexandru/baseWtApplication.git && \
-    cd baseWtApplication && \
-    make
+COPY . /app
+WORKDIR /app
+RUN make
 
 # #################### Deployment image starts here ####################
 
@@ -48,14 +33,18 @@ RUN apt-get update && apt-get install -y \
     zeroc-ice-all-dev
 # preferably tou can copy the libraries for zeroc ice from the builder image to this image
 
-# import Wt from the builder image and the app.exe
-COPY --from=wt /usr/lib/libwt*.so.* /usr/lib/
-copy --from=wt /usr/include/boost/* /usr/include/boost/
-copy --from=wt /usr/lib/x86_64-linux-gnu/libboost* /usr/lib/x86_64-linux-gnu/
+# copy libraries and application from builder
+COPY --from=builder /usr/lib/libwt*.so.* /usr/lib/
+COPY --from=builder /usr/include/boost/* /usr/include/boost/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libboost* /usr/lib/x86_64-linux-gnu/
 
-copy --from=builder /resources/* /application/resources
-copy --from=builder /baseWtApplication/myApp /application/
+COPY --from=builder /app/resources /app/resources
+COPY --from=builder /app/app /app
+COPY --from=builder /app/wt_config.xml /app
 
-CMD ./myApp docroot . --http-address 0.0.0.0 --http-port 9090
-
+WORKDIR /app
 EXPOSE 9090
+CMD ./app --docroot . -c ./wt_config.xml --http-address 0.0.0.0 --http-port 9090
+
+
+# docker run -it -d -p 9090:9090 --name wt-app wt:1
