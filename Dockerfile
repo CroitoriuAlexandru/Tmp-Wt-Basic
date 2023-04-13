@@ -15,7 +15,7 @@ RUN git clone https://github.com/emweb/wt.git wt && \
     cd build/ && \
     cmake ../ && \
     make && \
-    make install 
+    make install
 
 RUN cp /usr/local/lib/libwt*.so.* /usr/lib/
 
@@ -24,8 +24,6 @@ WORKDIR /app
 RUN make
 
 # #################### Deployment image starts here ####################
-
-# Final image to run the application
 FROM ubuntu:latest
 
 # application dependencie libraries
@@ -38,13 +36,14 @@ COPY --from=builder /usr/lib/libwt*.so.* /usr/lib/
 COPY --from=builder /usr/include/boost/* /usr/include/boost/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libboost* /usr/lib/x86_64-linux-gnu/
 
-COPY --from=builder /app/resources /app/resources
-COPY --from=builder /app/app /app
-COPY --from=builder /app/wt_config.xml /app
+COPY --from=builder /app /app
 
 WORKDIR /app
 EXPOSE 9090
 CMD ./app --docroot . -c ./wt_config.xml --http-address 0.0.0.0 --http-port 9090
 
+# To build the image:
+# docker build . -t wt
 
-# docker run -it -d -p 9090:9090 --name wt-app wt:1
+# To run the image:
+# docker run -it -d -p 9090:9090 --name wt-app wt
