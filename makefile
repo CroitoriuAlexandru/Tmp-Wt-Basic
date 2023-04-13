@@ -7,12 +7,12 @@ APPNAME = App
 EXT = .cpp
 SRCDIR = ./src
 OBJDIR = ./src/obj
-
+DBONAME = test.db
 # Linking lib
-LDFLAGS =  -lwthttp -lwt -lwtdbo -lpthread
+LDFLAGS =  -lwthttp -lwt -lwtdbo -lwtdbosqlite3 -lpthread
 
 # Runtime lib
-RLIB = --docroot . --http-address 0.0.0.0 --http-port 9090
+RLIB = --docroot . -c ./wt_config.xml --http-address 0.0.0.0 --http-port 9090
 
 
 ############## Creating variables #############
@@ -52,7 +52,7 @@ dbg:
 # Cleans complete project
 .PHONY: clean
 clean:
-	$(RM) $(APPNAME) $(DEP) $(OBJ)
+	$(RM) $(APPNAME) $(DEP) $(OBJ) $(DBONAME) 
 
 ################### Display variables ###################
 displayVariables:
