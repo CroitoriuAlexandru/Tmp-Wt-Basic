@@ -62,7 +62,7 @@ displayVariables:
 
 ################### Tailwind commands ###################
 startTailwind: buildTailwindModules
-	cd resources/tailwind && npx tailwindcss -i ./src/input.css -o ./dist/tailwind.css --watch
+	cd resources/themes/tailwind && npx tailwindcss -i ./src/input.css -o ./dist/tailwind.css --watch
 
 
 buildTailwindModules:
@@ -70,7 +70,7 @@ ifneq ("$(wildcard ./resources/tailwind/node_modules)","")
 	@echo "Tailwind modules already installed"
 else
 	@echo "Installing Tailwind modules"
-	cd resources/tailwind && npm install
+	cd resources/themes/tailwind && npm install
 endif
 	
 

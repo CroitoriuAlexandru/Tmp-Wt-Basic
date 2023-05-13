@@ -14,4 +14,5 @@ private:
     Wt::WMenu* mainMenu_;
     
     void createNavigation();
+    void createButtonsExample();
 };

@@ -1,5 +1,5 @@
 .vscode
-App
+app
 /src/obj/*.o
 *.d
 /resources/tailwind/node_modules

@@ -17,16 +17,16 @@
 
 <server>
 
-    <!-- Default application settings
+  <!-- Default application settings
 
       The special location "*" always matches. See below for an example
       of settings specific to a single application.
       -->
-    <application-settings location="*">
+  <application-settings location="*">
 
-        <!-- Session management. -->
-        <session-management>
-            <!-- Every session runs within a dedicated process.
+    <!-- Session management. -->
+    <session-management>
+      <!-- Every session runs within a dedicated process.
 
                This mode guarantees kernel-level session privacy, but as every
                session requires a separate process, it is also an easy target
@@ -43,14 +43,14 @@
                process.
               -->
 
-            <!--
+      <!--
                <dedicated-process>
                  <max-num-sessions>100</max-num-sessions>
                  <num-session-threads>10</num-session-threads>
                </dedicated-process>
             -->
 
-            <!-- Multiple sessions within one process.
+      <!-- Multiple sessions within one process.
 
                This mode spawns a number of processes, and sessions are
                allocated randomly to one of these processes (you should not
@@ -70,11 +70,11 @@
                Note: the wthttp connector will ignore the num-processes
                setting and use only process.
               -->
-            <shared-process>
-                <num-processes>1</num-processes>
-            </shared-process>
+      <shared-process>
+        <num-processes>1</num-processes>
+      </shared-process>
 
-            <!-- Session tracking strategy.
+      <!-- Session tracking strategy.
 
                Possible values:
                  Auto: cookies if available, otherwise URL rewriting
@@ -89,25 +89,25 @@
                like CSRF or BREACH), and also provides proper support for
                concurrent sessions in a single browser.
               -->
-            <tracking>URL</tracking>
+      <tracking>URL</tracking>
 
-            <!-- How reload should be handled.
+      <!-- How reload should be handled.
 
                When reload should (or rather, may) spawn a new session, then
                even in the case cookies are not used for session management,
                the URL will not be cluttered with a sessionid.
                However, WApplication::refresh() will never be called.
               -->
-            <reload-is-new-session>true</reload-is-new-session>
+      <reload-is-new-session>true</reload-is-new-session>
 
-            <!-- Session timeout (seconds).
+      <!-- Session timeout (seconds).
 
                When a session remains inactive for this amount of time, it is
                cleaned up.
               -->
-            <timeout>600</timeout>
+      <timeout>600</timeout>
 
-            <!-- Idle timeout (seconds).
+      <!-- Idle timeout (seconds).
 
                When the user does not interact with the application for the set number of seconds,
                WApplication::idleTimeout() is called. By default, this
@@ -120,9 +120,9 @@
 
                When omitted, or left empty, this feature is disabled.
                -->
-            <!--<idle-timeout>900</idle-timeout>-->
+      <!--<idle-timeout>900</idle-timeout>-->
 
-            <!-- Server push timeout (seconds).
+      <!-- Server push timeout (seconds).
 
                When using server-initiated updates, the client uses
                long-polling requests. Proxies (including reverse
@@ -131,16 +131,16 @@
                periodically and issues a new one. This timeout sets
                the frequency.
               -->
-            <server-push-timeout>50</server-push-timeout>
-        </session-management>
+      <server-push-timeout>50</server-push-timeout>
+    </session-management>
 
-        <!-- Settings that apply only to the FastCGI connector.
+    <!-- Settings that apply only to the FastCGI connector.
 
            To configure the wthttp connector, use command line options, or
            configure default options in /etc/wt/wthttpd
           -->
-        <connector-fcgi>
-            <!-- Valgrind path
+    <connector-fcgi>
+      <!-- Valgrind path
 
                If debugging is enabled and this path is not empty, then valgrind
                will be started for every shared process, or for every session
@@ -151,24 +151,24 @@
 
                  /usr/bin/valgrind - -leak-check=full
              -->
-            <valgrind-path></valgrind-path>
+      <valgrind-path></valgrind-path>
 
-            <!-- Run directory
+      <!-- Run directory
 
                Path used by Wt to do session management.
               -->
-            <run-directory>/var/run/wt</run-directory>
+      <run-directory>/var/run/wt</run-directory>
 
-        </connector-fcgi>
+    </connector-fcgi>
 
-        <!-- Settings that apply only to the MS IIS ISAPI connector.
+    <!-- Settings that apply only to the MS IIS ISAPI connector.
 
            To configure the wthttp connector, use command line options, or
            configure default options in /etc/wt/wthttpd
           -->
-        <connector-isapi>
+    <connector-isapi>
 
-            <!-- Maximum Request Size spooled in memory (KiB)
+      <!-- Maximum Request Size spooled in memory (KiB)
 
                Normally, Wt keeps incoming requests (POST data) in memory.
                However, malicious users could send a big POST and as such
@@ -182,10 +182,10 @@
                The default value is 128K, which is more than enough for
                any interactive Wt event.
               -->
-            <max-memory-request-size>128</max-memory-request-size>
-        </connector-isapi>
+      <max-memory-request-size>128</max-memory-request-size>
+    </connector-isapi>
 
-        <!-- Javascript debug options
+    <!-- Javascript debug options
 
              Values:
              - naked: JavaScript errors are not caught at all
@@ -198,18 +198,18 @@
              WApplication::handleJavaScriptError() is called which by
              default logs the error and terminates the session.
           -->
-        <debug>false</debug>
+    <debug>false</debug>
 
-        <!-- Log file
+    <!-- Log file
 
            When the log file is empty, or omitted, logging is done to
            stderr. This may end up in the web server error log file
            (e.g. for apache + fastcgi module), or on stderr (e.g. for
            the built-in httpd).
          -->
-        <log-file></log-file>
+    <log-file></log-file>
 
-        <!-- Logger configuration
+    <!-- Logger configuration
 
            This configures the logger. With the default configuration,
            everything except for debugging messages are logged.
@@ -240,25 +240,25 @@
            Note debugging messages are only emitted when debugging
            has been enabled while building Wt.
           -->
-        <log-config>* -debug</log-config>
+    <log-config>* -debug</log-config>
 
-        <!-- Maximum HTTP request size (KiB)
+    <!-- Maximum HTTP request size (KiB)
 
            Maximum size of an incoming POST request. This value must be
            increased when the user is allowed to upload files.
          -->
-        <max-request-size>128</max-request-size>
+    <max-request-size>128</max-request-size>
 
-        <!-- Maximum form data (KiB)
+    <!-- Maximum form data (KiB)
 
            Maximum size of the data in a POST request of type
            'application/x-www-form-urlencoded' (used for Wt form-field values)
            Note that the maximum size is also limited by the value of
            'max-request-size'.
         -->
-        <max-formdata-size>5120</max-formdata-size>
+    <max-formdata-size>5120</max-formdata-size>
 
-        <!--- Maximum number of pending events
+    <!--- Maximum number of pending events
 
             Client-side events (user-interaction, WTimer, custom js signals) are
             queued if the server did not yet respond to a previous update.
@@ -267,9 +267,9 @@
             in the server.
             Setting it to zero will disable the limit.
         -->
-        <max-pending-events>1000</max-pending-events>
+    <max-pending-events>1000</max-pending-events>
 
-        <!-- Number of threads per process
+    <!-- Number of threads per process
 
            You may want to change this value if you would like to
            support more reentrant event loops, where you block one
@@ -302,12 +302,12 @@
 
            The default value is 10.
               -->
-        <num-threads>10</num-threads>
+    <num-threads>10</num-threads>
 
-        <!-- Session id length (number of characters) -->
-        <session-id-length>16</session-id-length>
+    <!-- Session id length (number of characters) -->
+    <session-id-length>16</session-id-length>
 
-        <!-- DoS prevention: limit plain HTML sessions
+    <!-- DoS prevention: limit plain HTML sessions
 
            This is a simple measure which avoids Denial-of-Service
            attacks on plain HTML sessions, which are easy to mount in
@@ -325,9 +325,9 @@
            you set it to 0.5 for example, that means that 50% of all sessions
            may be plain HTML sessions.
           -->
-        <plain-ajax-sessions-ratio-limit>1</plain-ajax-sessions-ratio-limit>
+    <plain-ajax-sessions-ratio-limit>1</plain-ajax-sessions-ratio-limit>
 
-        <!-- DoS prevention: adds a puzzle to validate Ajax sessions
+    <!-- DoS prevention: adds a puzzle to validate Ajax sessions
 
            This is a simple measure which avoids Denial-of-Service
            attacks on Ajax sessions.
@@ -336,9 +336,9 @@
            request which eliminates agents that do not build a proper
            DOM tree.
           -->
-        <ajax-puzzle>false</ajax-puzzle>
+    <ajax-puzzle>false</ajax-puzzle>
 
-        <!-- Do strict serialization of events.
+    <!-- Do strict serialization of events.
 
            By default events are queued at the client-side, and
            transmitted to the server so that at any time only one
@@ -359,9 +359,9 @@
            pending, and can be configured by setting this option to
            true.
           -->
-        <strict-event-serialization>false</strict-event-serialization>
+    <strict-event-serialization>false</strict-event-serialization>
 
-        <!-- Enables web socket.
+    <!-- Enables web socket.
 
            By default Ajax and long polling are used to communicate
            between server and browser.
@@ -376,9 +376,9 @@
            that all (reverse) proxy servers also have explicit support
            for this protocol.
           -->
-        <web-sockets>false</web-sockets>
+    <web-sockets>false</web-sockets>
 
-        <!-- Enables the detection of webgl-capabilites.
+    <!-- Enables the detection of webgl-capabilites.
 
              When this is enabled, the browser will try to create a
              webgl-context when loading to verify that it is possible. This
@@ -388,9 +388,9 @@
              use WGLWidget, this option can be set to false. It will improve
              the initial loading time of the web application.
         -->
-        <webgl-detection>true</webgl-detection>
+    <webgl-detection>true</webgl-detection>
 
-        <!-- Redirect message shown for browsers without JavaScript support
+    <!-- Redirect message shown for browsers without JavaScript support
 
            By default, Wt will use an automatic redirect to start the
            application when the browser does not support
@@ -402,9 +402,9 @@
            the user may click to be redirected to a basic HTML version
            of your application.
           -->
-        <redirect-message>Load basic HTML</redirect-message>
+    <redirect-message>Load basic HTML</redirect-message>
 
-        <!-- Whether we are sitting behind a reverse proxy
+    <!-- Whether we are sitting behind a reverse proxy
 
            When deployed behind a reverse proxy (such as Apache or Squid),
            the server location is not read from the "Host" header,
@@ -417,12 +417,12 @@
            set to true, Wt will take the first non-local IP address from the
            Client-IP and X-Forwarded-For headers to determine the clientAddress().
           -->
-        <!--<behind-reverse-proxy>false</behind-reverse-proxy>-->
+    <!--<behind-reverse-proxy>false</behind-reverse-proxy>-->
 
-        <!-- The following configuration options can be used when Wt is behind a reverse proxy.
+    <!-- The following configuration options can be used when Wt is behind a reverse proxy.
           -->
-        <trusted-proxy-config>
-          <!-- Which header to use to get the real client IP address when behind a reverse proxy.
+    <trusted-proxy-config>
+      <!-- Which header to use to get the real client IP address when behind a reverse proxy.
 
                This could be X-Forwarded-For (default), CF-Connecting-IP for Cloudflare,
                True-Client-IP, Fastly-Client-IP,...
@@ -430,37 +430,37 @@
                This will influence the IP address returned by WEnvironment::clientAddress() and
                Http::Request::clientAddress().
             -->
-          <original-ip-header>X-Forwarded-For</original-ip-header>
+      <original-ip-header>X-Forwarded-For</original-ip-header>
 
-          <!-- Which proxy servers are trusted
+      <!-- Which proxy servers are trusted
 
                You can use single IP addresses or subnets in CIDR notation.
 
                By default, no proxy servers are trusted and any proxy headers are ignored, e.g.
                X-Forwarded-For, X-Forwarded-Proto, etc.
             -->
-          <trusted-proxies>
-            <!-- loopback -->
-            <!--
+      <trusted-proxies>
+        <!-- loopback -->
+        <!--
             <proxy>127.0.0.1/8</proxy>
             <proxy>::1/128</proxy>
             -->
-            <!-- link local -->
-            <!--
+        <!-- link local -->
+        <!--
             <proxy>169.254.0.0/16</proxy>
             <proxy>fe80::/10</proxy>
             -->
-            <!-- local -->
-            <!--
+        <!-- local -->
+        <!--
             <proxy>10.0.0.0/8</proxy>
             <proxy>172.16.0.0/12</proxy>
             <proxy>192.168.0.0/16</proxy>
             <proxy>fc00::/7</proxy>
             -->
-          </trusted-proxies>
-        </trusted-proxy-config>
+      </trusted-proxies>
+    </trusted-proxy-config>
 
-        <!-- Whether inline CSS is allowed.
+    <!-- Whether inline CSS is allowed.
 
            Some Wt widgets will insert CSS rules in the the inline
            stylesheet when first used. This can be disabled using this
@@ -470,21 +470,21 @@
            dynamically manipulate rules in this stylesheet, and will
            no longer work properly when inline-css is disabled.
           -->
-        <inline-css>true</inline-css>
+    <inline-css>true</inline-css>
 
-        <!-- The timeout before showing the loading indicator.
-
-           The value is specified in ms.
-          -->
-        <indicator-timeout>500</indicator-timeout>
-
-        <!-- The timeout for processing a double click event.
+    <!-- The timeout before showing the loading indicator.
 
            The value is specified in ms.
           -->
-        <double-click-timeout>200</double-click-timeout>
+    <indicator-timeout>500</indicator-timeout>
 
-        <!-- Ajax user agent list
+    <!-- The timeout for processing a double click event.
+
+           The value is specified in ms.
+          -->
+    <double-click-timeout>200</double-click-timeout>
+
+    <!-- Ajax user agent list
 
            Wt considers three types of sessions:
            - Ajax sessions: use Ajax and JavaScript
@@ -508,35 +508,35 @@
 
            Each <user-agent> is a regular expression.
           -->
-        <user-agents type="ajax" mode="black-list">
-          <!-- <user-agent>.*Crappy browser.*</user-agent> -->
-        </user-agents>
+    <user-agents type="ajax" mode="black-list">
+      <!-- <user-agent>.*Crappy browser.*</user-agent> -->
+    </user-agents>
 
-        <!-- Bot user agent list
+    <!-- Bot user agent list
 
            Here, you can specify user agents that should be should be
            treated as bots.
 
            Each <user-agent> is a regular expression.
           -->
-        <user-agents type="bot">
-            <user-agent>.*Googlebot.*</user-agent>
-            <user-agent>.*msnbot.*</user-agent>
-            <user-agent>.*Slurp.*</user-agent>
-            <user-agent>.*Crawler.*</user-agent>
-            <user-agent>.*Bot.*</user-agent>
-            <user-agent>.*ia_archiver.*</user-agent>
-            <user-agent>.*Twiceler.*</user-agent>
-            <user-agent>.*Yandex.*</user-agent>
-            <user-agent>.*Nutch.*</user-agent>
-            <user-agent>.*MJ12bot.*</user-agent>
-            <user-agent>.*Baiduspider.*</user-agent>
-            <user-agent>.*Ezooms.*</user-agent>
-            <user-agent>.*Sogou web spider.*</user-agent>
-            <user-agent>.*AhrefsBot.*</user-agent>
-        </user-agents>
+    <user-agents type="bot">
+      <user-agent>.*Googlebot.*</user-agent>
+      <user-agent>.*msnbot.*</user-agent>
+      <user-agent>.*Slurp.*</user-agent>
+      <user-agent>.*Crawler.*</user-agent>
+      <user-agent>.*Bot.*</user-agent>
+      <user-agent>.*ia_archiver.*</user-agent>
+      <user-agent>.*Twiceler.*</user-agent>
+      <user-agent>.*Yandex.*</user-agent>
+      <user-agent>.*Nutch.*</user-agent>
+      <user-agent>.*MJ12bot.*</user-agent>
+      <user-agent>.*Baiduspider.*</user-agent>
+      <user-agent>.*Ezooms.*</user-agent>
+      <user-agent>.*Sogou web spider.*</user-agent>
+      <user-agent>.*AhrefsBot.*</user-agent>
+    </user-agents>
 
-        <!-- Configures different rendering engines for certain browsers.
+    <!-- Configures different rendering engines for certain browsers.
 
            Currently this is only used to select IE7 compatible rendering
            engine for IE8, which solves problems of unreliable and slow
@@ -548,9 +548,9 @@
            improved CSS support. If you make heavy use of VML, you may need
            to revert to IE8=IE7.
           -->
-        <UA-Compatible></UA-Compatible>
+    <UA-Compatible></UA-Compatible>
 
-        <!-- Configures whether the progressive bootstrap method is used.
+    <!-- Configures whether the progressive bootstrap method is used.
 
            The default bootstrap method first senses whether there is Ajax
            support, and only then creates the application.
@@ -560,9 +560,9 @@
 
            (Not to be confused with the Twitter Bootstrap theme)
           -->
-        <progressive-bootstrap>false</progressive-bootstrap>
+    <progressive-bootstrap>false</progressive-bootstrap>
 
-        <!-- Set session-ID cookie
+    <!-- Set session-ID cookie
 
            In its default (and recommended) configuration, Wt does not
            rely on cookies for session tracking.
@@ -584,18 +584,18 @@
            changes, an additional cookie may be set which is used only
            for this purpose, and can be enabled using this setting.
           -->
-        <session-id-cookie>false</session-id-cookie>
+    <session-id-cookie>false</session-id-cookie>
 
-        <!-- Configure cookie checks
+    <!-- Configure cookie checks
 
          By default, Wt will test for cookie support using JavaScript.
          Because cookie manipulation from JavaScript is a common security
          risk vector, some prefer to disable these checks.
 
          -->
-        <cookie-checks>true</cookie-checks>
+    <cookie-checks>true</cookie-checks>
 
-        <!-- Configure meta headers
+    <!-- Configure meta headers
 
          The user-agent allows optional filtering based on the
          user-agent, using a regular expression. You can have multiple
@@ -608,7 +608,7 @@
         </meta-headers>
          -->
 
-        <!-- Configure <head> matter
+    <!-- Configure <head> matter
 
           The user-agent allows optional filtering based on the
           user-agent, using a regular expression. You can have multiple
@@ -618,11 +618,15 @@
           verbatim. This could be useful for setting <meta> tags or
           <link> tags that are global for the entire application.
         -->
-        <head-matter user-agent=".*MSIE.*">
-          <meta name="robots" content="noindex" />
-        </head-matter>
+    <head-matter user-agent=".*MSIE.*">
+      <meta name="robots" content="noindex" />
+    </head-matter>
 
-        <!-- Configure allowed origins for CORS (only for WidgetSet entry points)
+    <head-matter>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head-matter>
+
+    <!-- Configure allowed origins for CORS (only for WidgetSet entry points)
 
          Since Wt 3.3.8, cross-origin requests are disallowed by default.
 
@@ -642,24 +646,24 @@
          If <allowed-origins> contains * (the asterisk character),
          all origins are allowed.
           -->
-        <allowed-origins>
-          <!-- Leave empty to disallow all origins. -->
+    <allowed-origins>
+      <!-- Leave empty to disallow all origins. -->
 
-          <!-- To allow any origin: -->
-          <!-- * -->
+      <!-- To allow any origin: -->
+      <!-- * -->
 
-          <!-- To allow only http://example.com and http://example.org: -->
-          <!-- http://example.com,http://example.org -->
-        </allowed-origins>
+      <!-- To allow only http://example.com and http://example.org: -->
+      <!-- http://example.com,http://example.org -->
+    </allowed-origins>
 
-        <!-- Runtime Properties
+    <!-- Runtime Properties
 
            These properties may be used to adapt applications to their
            deployment environment. Typical use is for paths to resources
            that may or may not be shared between several applications.
           -->
-        <properties>
-            <!-- baseURL property
+    <properties>
+      <!-- baseURL property
 
                The absolute URL at which the application is deployed
                (known to the user). This is needed only in two scenarios.
@@ -690,9 +694,9 @@
                application deploy path, even in the presence of an
                internal path.
               -->
-            <!-- <property name="baseURL">"http://mysite.com/app</property> -->
+      <!-- <property name="baseURL">"http://mysite.com/app</property> -->
 
-            <!-- resourcesURL property
+      <!-- resourcesURL property
 
                The URL at which the resources/ folder is deployed that
                comes distributed with Wt and contains auxiliary files
@@ -700,9 +704,9 @@
 
                The default value is 'resources/'
               -->
-            <property name="resourcesURL">resources/</property>
+      <property name="resourcesURL">resources/</property>
 
-            <!-- favicon property
+      <!-- favicon property
 
                By default, a browser will try to fetch a /favicon.ico icon
                from the root of your web server which is used as an icon
@@ -710,23 +714,23 @@
                by setting this property, or for an individual application
                entry point by passing a location to WServer::addEntryPoint().
               -->
-            <!-- <property name="favicon">images/favicon.ico</property> -->
+      <!-- <property name="favicon">images/favicon.ico</property> -->
 
-            <!-- leafletJSURL and leafletCSSURL properties
+      <!-- leafletJSURL and leafletCSSURL properties
 
                This is required if you want to use WLeafletMap, since leaflet itself is not bundled with Wt.
                leafletJSURL should be a valid URL leading to the leaflet JavaScript, and leafletCSSURL to the leaflet CSS.
               -->
-            <!-- <property name="leafletJSURL">https://unpkg.com/leaflet@1.5.1/dist/leaflet.js</property> -->
-            <!-- <property name="leafletCSSURL">https://unpkg.com/leaflet@1.5.1/dist/leaflet.css</property> -->
+      <!-- <property name="leafletJSURL">https://unpkg.com/leaflet@1.5.1/dist/leaflet.js</property> -->
+      <!-- <property name="leafletCSSURL">https://unpkg.com/leaflet@1.5.1/dist/leaflet.css</property> -->
 
-            <!-- google_api_key property
+      <!-- google_api_key property
 
                 The Google API key to be used with WGoogleMap.
             -->
-            <!-- <property name="google_api_key"></property> -->
+      <!-- <property name="google_api_key"></property> -->
 
-            <!-- Mail properties
+      <!-- Mail properties
 
               These properties can be used to change the default settings used by Wt::Mail::Client.
 
@@ -740,25 +744,25 @@
              - smtp-auth-username: the username to use for authentication (defaults to empty)
              - smtp-auth-password: the password to use for authentication (defaults to empty)
             -->
-            <!-- <property name="smtp-host">localhost</property> -->
-            <!-- <property name="smtp-port">25</property> -->
-            <!-- <property name="smtp-self-host">localhost</property> -->
-            <!-- <property name="smtp-transport-encryption>none</property> -->
-            <!-- <property name="smtp-auth-method">none</property> -->
-            <!-- <property name="smtp-auth-username"></property> -->
-            <!-- <property name="smtp-auth-password"></property> -->
+      <!-- <property name="smtp-host">localhost</property> -->
+      <!-- <property name="smtp-port">25</property> -->
+      <!-- <property name="smtp-self-host">localhost</property> -->
+      <!-- <property name="smtp-transport-encryption>none</property> -->
+      <!-- <property name="smtp-auth-method">none</property> -->
+      <!-- <property name="smtp-auth-username"></property> -->
+      <!-- <property name="smtp-auth-password"></property> -->
 
-            <!-- AuthService properties
+      <!-- AuthService properties
 
               These properties are used to configure AuthService.
 
              - auth-mail-sender-name: the sender name when AuthService sends emails, defaults to "Wt Auth module"
              - auth-mail-sender-address: the sender address when AuthService sends emails, defaults to "noreply-auth@www.webtoolkit.eu"
             -->
-            <!-- <property name="auth-mail-sender-name">Wt Auth module</property> -->
-            <!-- <property name="auth-mail-sender-address">noreply-auth@www.webtoolkit.eu</property> -->
+      <!-- <property name="auth-mail-sender-name">Wt Auth module</property> -->
+      <!-- <property name="auth-mail-sender-address">noreply-auth@www.webtoolkit.eu</property> -->
 
-            <!-- OAuthService properties
+      <!-- OAuthService properties
 
               These properties are used to configure OAuthService.
 
@@ -770,10 +774,10 @@
                                         without popup. If a user takes longer than this to login,
                                         the application will be destroyed. The default is 10 minutes.
             -->
-            <!-- <property name="oauth2-secret"></property> -->
-            <!-- <property name="oauth2-redirect-timeout">600</property> -->
+      <!-- <property name="oauth2-secret"></property> -->
+      <!-- <property name="oauth2-redirect-timeout">600</property> -->
 
-            <!-- SAML properties
+      <!-- SAML properties
 
               These properties are used to configure Saml::Service.
 
@@ -785,10 +789,10 @@
                                        without popup. If a user takes longer than this to login,
                                        the application will be destroyed. The default is 10 minutes.
             -->
-            <!-- <property name="saml-secret"></property> -->
-            <!-- <property name="saml-redirect-timeout">600</property> -->
+      <!-- <property name="saml-secret"></property> -->
+      <!-- <property name="saml-redirect-timeout">600</property> -->
 
-            <!-- PayPal properties
+      <!-- PayPal properties
 
               These properties can be used to configure Wt::Payment::PayPalService,
               by calling configureFromProperties().
@@ -800,14 +804,14 @@
              - paypal-pay-server-url: the URL of the server where the user is redirected for the payment
              - paypal-version: the PayPal API version
             -->
-            <!-- <property name="paypal-user"></property>
+      <!-- <property name="paypal-user"></property>
                  <property name="paypal-password"></property>
                  <property name="paypal-signature"></property>
                  <property name="paypal-api-server-url"></property>
                  <property name="paypal-pay-server-url"></property>
                  <property name="paypal-version"></property> -->
 
-            <!-- TinyMCE properties
+      <!-- TinyMCE properties
 
               These properties are used to configure TinyMCE for WTextEdit.
 
@@ -818,24 +822,23 @@
                                and resourcesURL/tinymce for TinyMCE 4 or later.
                                Note: resourcesURL refers to the resourcesURL property, which itself defaults to "resources/"
             -->
-            <!-- <property name="tinyMCEVersion">3</property> -->
-            <!-- <property name="tinyMCEURL"></property> -->
-            <!-- <property name="tinyMCEBaseURL">resources/tiny_mce</property> -->
-        </properties>
+      <!-- <property name="tinyMCEVersion">3</property> -->
+      <!-- <property name="tinyMCEURL"></property> -->
+      <!-- <property name="tinyMCEBaseURL">resources/tiny_mce</property> -->
+    </properties>
 
-    </application-settings>
+  </application-settings>
 
 
-    <!-- Override settings for specific applications.
+  <!-- Override settings for specific applications.
 
        Location refers to physical filesystem location of the
        application. The application prints this location (which
        corresponds to argv[0]) to the log file on startup, and this
        should match exactly.
       -->
-    <!--
-    <application-settings
-       location="/var/www/localhost/wt-examples/hello.wt">
+  <!--
+    <application-settings location="/var/www/localhost/wt-examples/hello.wt">
     </application-settings>
     -->
 </server>
