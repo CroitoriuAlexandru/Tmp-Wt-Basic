@@ -2,17 +2,19 @@
 #include <Wt/WApplication.h>
 #include <Wt/WServer.h>
 #include <Wt/Dbo/Exception.h>
-#include "include/Theme.h"
 
 std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
 {
 	auto app = std::make_unique<Wt::WApplication>(env);
 	app->setTitle("Simple Application Template");
-	app->setTheme(std::make_shared<Theme>());
 
+	// add style file from tailwind
+	app->useStyleSheet("resources/tailwind/dist/tailwind.css");
+	// app->useStyleSheet("https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js");
 	// add mesage resource bundle from templates
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/General");
-
+	app->messageResourceBundle().use(app->appRoot() + "resources/templates/TailwindNavbar");
+	app->messageResourceBundle().use(app->appRoot() + "resources/templates/TailwindThemeSwitcher");
 	// add custom javascript files
 	app->require("resources/Js/Utility.js");
 
@@ -20,6 +22,8 @@ std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
 
 	// add application to root
 	app->root()->addWidget(std::make_unique<App>());
+	app->root()->addStyleClass("w-100 h-100");
+	app->setBodyClass("bg-slate-400 dark:bg-slate-800");
 	return app;
 }
 

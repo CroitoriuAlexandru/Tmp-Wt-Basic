@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/tailwind.css" rel="stylesheet" />
+    <script src="./input.js" def></script>
+    <title>Title</title>
+  </head>
+
+  <body class="dark:bg--900 bg-gray-200">
+    <!-- Theme switcher -->
+    <div class="absolute right-0 top-0">
+      <div
+        class="m-4 flex h-5 w-10 items-center rounded-full bg-white shadow transition duration-300 focus:outline-none"
+        onclick="toggleTheme()"
+      >
+        <div
+          id="themeToggler"
+          class="relative h-6 w-6 -translate-x-2 transform rounded-full bg-yellow-500 p-1 text-white transition duration-500"
+        ></div>
+      </div>
+    </div>
+
+    <input
+      type="text"
+      value="mamita"
+      class="focus:shadow-outline w-full rounded-lg px-4 py-3 font-medium text-gray-600 shadow-sm focus:outline-none"
+    />
+    <button class="btn">mamaie</button>
+    <button class="">ceva</button>
+    <script src="./js/themeSwitcher.js"></script>
+  </body>
+</html>
+
+<!-- npm install -D prettier-plugin-tailwindcss -->

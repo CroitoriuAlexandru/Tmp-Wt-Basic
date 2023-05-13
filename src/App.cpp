@@ -1,14 +1,23 @@
 #include "include/App.h"
 #include "include/PageOne.h"
 #include "include/PageTwo.h"
+#include "include/TailwindThemeSwitcher.h"
+// #include "include/TailwindNavbar.h"
 
+#include <Wt/WTemplate.h>
 #include <Wt/WApplication.h>
+#include <Wt/WPushButton.h>
 
 App::App()
 	: WContainerWidget()
 {
-	addStyleClass("application");
-	createNavigation();
+	addStyleClass("bg-gray-200 dark:bg-gray-800");
+	// createNavigation();
+	auto themeSwitcher = addWidget(std::make_unique<Tailwind::ThemeSwitcher>(false, 8));
+	themeSwitcher->addStyleClass("absolute top-0 left-0  m-2");
+	// auto tailwindNavbar = addWidget(std::make_unique<TailwindNavbar>());
+	auto btn = addWidget(std::make_unique<Wt::WPushButton>("Click Me"));
+	btn->setStyleClass("btn");
 }
 
 void App::createNavigation()
@@ -43,5 +52,5 @@ void App::createNavigation()
 	mainMenu_->addItem(std::move(menuItemTwo));
 
 	// default starting page
-	Wt::WApplication::instance()->setInternalPath("/page_two", true);
+	Wt::WApplication::instance()->setInternalPath("/page_one", true);
 }

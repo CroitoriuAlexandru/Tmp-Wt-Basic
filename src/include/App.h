@@ -12,6 +12,6 @@ private:
     Wt::WNavigationBar* navigation_;
     Wt::WStackedWidget* contentsStack_;
     Wt::WMenu* mainMenu_;
-
+    
     void createNavigation();
 };

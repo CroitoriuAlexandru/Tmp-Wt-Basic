@@ -59,3 +59,23 @@ displayVariables:
 	@echo $(SRC)
 	@echo $(OBJ)
 	@echo $(DEP)
+
+################### Tailwind commands ###################
+startTailwind: buildTailwindModules
+	cd resources/tailwind && npx tailwindcss -i ./src/input.css -o ./dist/tailwind.css --watch
+
+
+buildTailwindModules:
+ifneq ("$(wildcard ./resources/tailwind/node_modules)","")
+	@echo "Tailwind modules already installed"
+else
+	@echo "Installing Tailwind modules"
+	cd resources/tailwind && npm install
+endif
+	
+
+
+
+
+
+
