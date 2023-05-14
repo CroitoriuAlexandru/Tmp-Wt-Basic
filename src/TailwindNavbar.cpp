@@ -1,30 +1,26 @@
 #include "include/TailwindNavbar.h"
+#include "include/TailwindThemeSwitcher.h"
 #include <Wt/WPushButton.h>
 #include <Wt/WText.h>
 
 TailwindNavbar::TailwindNavbar()
+: WContainerWidget()
 {
-    addStyleClass("bg-gray-800");
-    // Navbar
-    auto navbar_wrapper = addWidget(std::make_unique<Wt::WContainerWidget>());
-    navbar_wrapper->addStyleClass(navbar_styles);
-    auto navbar = navbar_wrapper->addWidget(std::make_unique<Wt::WContainerWidget>());
-    navbar->addStyleClass(navbar_wrapper_styles);
+    // class="flex align-middle"
+    addStyleClass("flex items-center bg-gray-800 p-2");
 
-    // Mobile Dropdown Btn
-    auto navbar_mobileBtn_wrapper = navbar_wrapper->addWidget(std::make_unique<Wt::WContainerWidget>());
-    navbar_mobileBtn_wrapper->addStyleClass(navbar_mobileBtn_styles);
-    auto mobiBtn = navbar_mobileBtn_wrapper->addWidget(std::make_unique<Wt::WText>(dropdownBtn_XML, Wt::TextFormat::UnsafeXHTML));
+    // Dropdown for mobile
+    auto dropdown = addWidget(std::make_unique<Wt::WText>(dropdown_XML, Wt::TextFormat::UnsafeXHTML));
+    dropdown->setStyleClass("sm:hidden me-auto");
+    // Logo/Home Btn
+    auto logo = addWidget(std::make_unique<Wt::WText>(icons_XML, Wt::TextFormat::UnsafeXHTML));
 
-    // Menus Wrapper
-    auto navbar_menus_wrapper = navbar->addWidget(std::make_unique<Wt::WContainerWidget>());
-    navbar_menus_wrapper->addStyleClass(navbar_menus_wrapper_styles);
-
-    // Navbar Logo
-    auto iconsWrapper = navbar_menus_wrapper->addWidget(std::make_unique<Wt::WText>(icons_XML, Wt::TextFormat::UnsafeXHTML));
-    iconsWrapper->addStyleClass(navbar_menus_icons_wrapper_styles);
-
-
-    
+    addThemeSwitcher();
 }
+
     
+void TailwindNavbar::addThemeSwitcher() {
+    auto themeSwitcher = addWidget(std::make_unique<Tailwind::ThemeSwitcher>(false, 4));
+    themeSwitcher->addStyleClass("m-2 ms-auto p-1");
+}
+

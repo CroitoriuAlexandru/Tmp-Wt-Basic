@@ -1,4 +1,4 @@
-#include <Wt/WText.h>
+#include <Wt/WContainerWidget.h>
 #include <Wt/WString.h>
 
 namespace Tailwind {
@@ -6,21 +6,23 @@ namespace Tailwind {
 //  A widget that changes the theme of the application between light and dark mode by changing the html class to "dark" or "".
 
 
-    class ThemeSwitcher : public Wt::WText
+    class ThemeSwitcher : public Wt::WContainerWidget
     {
     public:
         ThemeSwitcher(bool isDarkMode = false, int size = 5);
         void switchTheme();
-        void setSize(int size);
 
     private:
+        Wt::WContainerWidget* toggler_;
+        Wt::WText* togglerIcon_;
 
         bool isDarkMode_;
-        int size_ = 4;
+        int size_;
         void setLightTheme();
         void setDarkTheme();
         // size should be a number between 2 and 8
-        
+        void setSize(int size = 4);
+
         Wt::WString darkIcon = R"(<svg 
             xmlns="http://www.w3.org/2000/svg" 
             fill="none" viewBox="0 0 24 24" 
@@ -43,11 +45,12 @@ namespace Tailwind {
                 d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>)";
 
-        Wt::WString thisClasses_ = "rounded-full bg-white transition duration-300 focus:outline-none shadow inline";
-        Wt::WString togglerClasses_ = "relative rounded-full transition duration-500";
+        Wt::WString thisClasses_ = "rounded-full bg-white flex items-center transition duration-300 focus:outline-none shadow inline";
+        Wt::WString togglerClasses_ = "relative rounded-full transition duration-500 transform";
 
         Wt::WString lightClass_ = "bg-yellow-500";
         Wt::WString darkClass_ = "bg-gray-500";
+        Wt::WString movementClass_ = "translate-x-full";
     };
 
 }

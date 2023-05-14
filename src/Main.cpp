@@ -20,13 +20,14 @@ std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
 
 	// add custom javascript files
 	app->require("resources/Js/Utility.js");
+	app->require("resources/themes/tailwind/node_modules/tw-elements/dist/js/tw-elements.umd.min.js");
 
 	app->instance()->setInternalPath("/");
-	app->instance()->setHtmlClass("min-w-full");
+	// app->instance()->setHtmlClass("min-w-full");
 	// add application to root
 	app->root()->addWidget(std::make_unique<App>());
 	// app->root()->addStyleClass("w-100 h-100");
-	app->setBodyClass("m-0 bg-gray-200 dark:bg-slate-900 min-w-full");
+	app->setBodyClass("m-0 bg-gray-200 dark:bg-slate-900 ");
 
 	return app;
 }
