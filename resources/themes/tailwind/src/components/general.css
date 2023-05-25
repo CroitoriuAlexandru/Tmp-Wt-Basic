@@ -1,0 +1,40 @@
+.text-basic {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.bg-basic {
+  @apply text-basic bg-gray-200 dark:bg-gray-500;
+}
+
+.hover-basic {
+  @apply hover:bg-gray-300 hover:text-gray-950 dark:hover:bg-gray-600 dark:hover:text-gray-200;
+}
+
+.active-basic {
+  @apply bg-gray-300 text-gray-950 dark:bg-gray-600 dark:text-gray-200;
+}
+/* custom default styles for elements */
+body {
+  @apply m-0 bg-gray-100 dark:bg-gray-700 dark:text-white;
+}
+
+a {
+  @apply text-white no-underline;
+}
+
+/* Some flex utilitis */
+.flex-center {
+  @apply flex justify-center;
+}
+
+.flex-center-center {
+  @apply flex-center items-center;
+}
+
+.flex-col-center {
+  @apply flex flex-col items-center;
+}
+
+.flex-col-center-center {
+  @apply flex-col-center justify-center;
+}

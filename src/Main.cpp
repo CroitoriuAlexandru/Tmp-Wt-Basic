@@ -15,19 +15,16 @@ std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
 
 	// add mesage resource bundle from templates
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/General");
-	app->messageResourceBundle().use(app->appRoot() + "resources/templates/TailwindNavbar");
-	app->messageResourceBundle().use(app->appRoot() + "resources/templates/TailwindThemeSwitcher");
+	app->messageResourceBundle().use(app->appRoot() + "resources/templates/ThemeSwitcher");
+	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Navbar");
 
 	// add custom javascript files
 	app->require("resources/Js/Utility.js");
-	app->require("resources/themes/tailwind/node_modules/tw-elements/dist/js/tw-elements.umd.min.js");
 
 	app->instance()->setInternalPath("/");
-	// app->instance()->setHtmlClass("min-w-full");
 	// add application to root
 	app->root()->addWidget(std::make_unique<App>());
-	// app->root()->addStyleClass("w-100 h-100");
-	app->setBodyClass("m-0 bg-gray-200 dark:bg-slate-900 ");
+	// app->setBodyClass(" ");
 
 	return app;
 }

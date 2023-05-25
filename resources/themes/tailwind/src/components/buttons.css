@@ -1,12 +1,12 @@
 /* DEFAULT  */
 .btn-light-default {
-  @apply bg-gray-50 text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:bg-gray-200;
+  @apply hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:bg-gray-200;
 }
 .btn-dark-default {
-  @apply dark:bg-gray-700 dark:text-gray-100 dark:shadow dark:shadow-gray-800 dark:hover:bg-gray-600 dark:focus:ring-1 dark:focus:ring-gray-800 dark:disabled:text-gray-400;
+  @apply dark:shadow dark:shadow-gray-800 dark:hover:bg-gray-600 dark:focus:ring-1 dark:focus:ring-gray-800 dark:disabled:bg-gray-700 dark:disabled:text-gray-400;
 }
 .btn {
-  @apply btn-light-default btn-dark-default m-2 cursor-pointer rounded-lg border-0 border-solid px-4 py-1 text-center font-medium tracking-wider shadow-md first-letter:uppercase disabled:cursor-not-allowed;
+  @apply bg-basic btn-light-default btn-dark-default m-2 cursor-pointer rounded-lg border-0 border-solid px-4 py-1 text-center font-medium tracking-wider shadow-md first-letter:uppercase disabled:cursor-not-allowed;
 }
 
 /* PRIMARY */
@@ -55,7 +55,7 @@
 
 /* WARNING */
 .btn-warning-light {
-  @apply bg-yellow-500 text-gray-50 hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300 disabled:bg-yellow-400 disabled:text-gray-300 disabled:hover:bg-yellow-400;
+  @apply bg-yellow-500 text-gray-100 hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300 disabled:bg-yellow-400 disabled:text-gray-50 disabled:hover:bg-yellow-400;
 }
 .btn-warning-dark {
   @apply dark:bg-yellow-700 dark:hover:bg-yellow-800 dark:focus:ring-1 dark:focus:ring-yellow-950 dark:disabled:bg-yellow-950 dark:disabled:hover:bg-yellow-950;
@@ -66,7 +66,7 @@
 
 /* INFO */
 .btn-info-light {
-  @apply bg-teal-500 text-gray-50 hover:bg-teal-600 focus:ring-2 focus:ring-teal-300 disabled:bg-teal-400 disabled:text-gray-300 disabled:hover:bg-teal-400;
+  @apply bg-teal-500 text-gray-50 hover:bg-teal-600 focus:ring-2 focus:ring-teal-300 disabled:bg-teal-400 disabled:text-gray-100 disabled:hover:bg-teal-400;
 }
 .btn-info-dark {
   @apply dark:bg-teal-700 dark:hover:bg-teal-800 dark:focus:ring-1 dark:focus:ring-teal-950 dark:disabled:bg-teal-950 dark:disabled:hover:bg-teal-950;
@@ -80,7 +80,7 @@
   @apply bg-gray-800 text-gray-50 hover:bg-gray-900 focus:ring-2 focus:ring-gray-300 disabled:bg-gray-700 disabled:text-gray-300 disabled:hover:bg-gray-700;
 }
 .btn-dark-dark {
-  @apply dark:bg-gray-700  dark:hover:bg-gray-800 dark:focus:ring-1 dark:focus:ring-gray-800 dark:disabled:bg-gray-800 dark:disabled:hover:bg-gray-800;
+  @apply dark:bg-gray-900  dark:hover:bg-gray-950 dark:focus:ring-1 dark:focus:ring-gray-950 dark:disabled:bg-gray-700 dark:disabled:hover:bg-gray-700;
 }
 .btn-dark {
   @apply btn btn-dark-light btn-dark-dark;

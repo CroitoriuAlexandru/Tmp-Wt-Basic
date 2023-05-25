@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <messages>
 
-	<message id='test-temp-1'>
-		<div class="border">tralala</div>
+	<message id='hamburger-svg'>
+		<svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+		</svg>
 	</message>
 
-	<message id='test-dropdown-tailwind'>
-		<div class="relative">
-			<ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [[data-te-dropdown-show]]:block">
-				<li class="mt-12">asd</li>
-			</ul>
-		</div>
+	<message id='arrow-up-svg'>
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<polyline points="18 15 12 9 6 15" />
+		</svg>
 	</message>
 
+	<message id='arrow-down-svg'>
+		<svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+			<path stroke="none" d="M0 0h24v24H0z"/>
+			<polyline points="6 9 12 15 18 9" />
+		</svg>
+	</message>
+
+	<message id="hamburger-svg">
+		<svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+		</svg>
+	</message>
+
+	<message id='x-svg'>
+		<svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+		</svg>
+	</message>
 </messages>

@@ -1,9 +1,9 @@
 #pragma once
 #include <Wt/WContainerWidget.h>
 
-class PageOne : public Wt::WContainerWidget
+class Buttons : public Wt::WContainerWidget
 {
 public:
-    PageOne();
+    Buttons();
 private:
 };
