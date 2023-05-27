@@ -12,6 +12,8 @@ class App : public Wt::WContainerWidget
 public:
     App();
 private:
+    int authStep = 1;
+
     int currentMenuIndex_ = 0;
     Wt::WStackedWidget* stack_;
     Wt::WMenu* menu_;

@@ -7,11 +7,11 @@
 }
 
 .hover-basic {
-  @apply hover:bg-gray-300 hover:text-gray-950 dark:hover:bg-gray-600 dark:hover:text-gray-200;
+  @apply hover:bg-gray-100 hover:text-gray-950 dark:hover:bg-gray-600 dark:hover:text-gray-200;
 }
 
 .active-basic {
-  @apply bg-gray-300 text-gray-950 dark:bg-gray-600 dark:text-gray-200;
+  @apply bg-gray-100 text-gray-950 dark:bg-gray-600 dark:text-gray-200;
 }
 /* custom default styles for elements */
 body {

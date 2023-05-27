@@ -17,6 +17,7 @@ std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/General");
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/ThemeSwitcher");
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Navbar");
+	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Auth");
 
 	// add custom javascript files
 	app->require("resources/Js/Utility.js");

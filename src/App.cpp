@@ -5,13 +5,32 @@
 App::App()
 	: WContainerWidget()
 {
-	createApp();
+	auto auth_temp = addWidget(std::make_unique<Wt::WTemplate>(tr("auth-temp")));
+	auth_temp->setStyleClass("mx-auto max-w-3xl px-4 py-10");
+	auth_temp->bindWidget("content", std::make_unique<Wt::WTemplate>(tr("step-1")));
+	auto next_btn = auth_temp->bindWidget("next-btn", std::make_unique<Wt::WPushButton>("continue"));
+	auto prev_btn = auth_temp->bindWidget("prev-btn", std::make_unique<Wt::WPushButton>("previous")); 
+	
+	next_btn->clicked().connect(this, [=](){
+		if(authStep < 3){
+			auth_temp->bindWidget("content", std::make_unique<Wt::WTemplate>(tr("step-" + std::to_string(authStep+1))));
+			++authStep;
+		}
+	});
+	prev_btn->clicked().connect(this, [=](){
+		if(authStep > 1){
+			auth_temp->bindWidget("content", std::make_unique<Wt::WTemplate>(tr("step-" + std::to_string(authStep-1))));
+		--authStep;
+		}
+
+	});
+	// createApp();
 }
 
 void App::onMenuItemSelected(Wt::WMenuItem* menuItem) 
 {
 	auto nextMenuIndex = stack_->currentIndex();	
-
+	std::cout << "\n\n current = " << currentMenuIndex_ << " \nnext = " << nextMenuIndex << "\n\n";
 	if(nextMenuIndex <= 1){
 		menuItem->addStyleClass("bg-gray-900");	
 	}else {
@@ -21,6 +40,7 @@ void App::onMenuItemSelected(Wt::WMenuItem* menuItem)
 
 	if(currentMenuIndex_ <= 1){
 		menu_->itemAt(currentMenuIndex_)->removeStyleClass("bg-gray-900");
+		menu_->itemAt(currentMenuIndex_)->close();
 	}else {
 		userMenu_->itemAt(currentMenuIndex_ -2)->anchor()->removeStyleClass("active-basic");
 	}
@@ -115,7 +135,7 @@ void App::createApp() {
     });
 
 	// default state of the app
-	Wt::WApplication::instance()->setInternalPath("/buttons	", true);
+	Wt::WApplication::instance()->setInternalPath("/page_two", true);
 	currentMenuIndex_ = menu_->currentIndex();
 	menu_->currentItem()->addStyleClass("bg-gray-900");
 }
