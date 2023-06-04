@@ -19,6 +19,8 @@ RUN git clone https://github.com/emweb/wt.git wt && \
 
 RUN cp /usr/local/lib/libwt*.so.* /usr/lib/
 
+RUN rm -r wt
+
 COPY . /app
 WORKDIR /app
 RUN make

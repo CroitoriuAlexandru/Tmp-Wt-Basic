@@ -7,7 +7,7 @@ Buttons::Buttons()
     : WContainerWidget()
 {
 	// setStyleClass("bg-basic");
-    addWidget(std::make_unique<Wt::WText>("<h1>Buttons</h1>"));
+    addWidget(std::make_unique<Wt::WText>("<div class='text-current'>Buttons</div>"));
     
     auto btn_Wrapper = addWidget(std::make_unique<Wt::WContainerWidget>());
 	btn_Wrapper->addStyleClass("block");

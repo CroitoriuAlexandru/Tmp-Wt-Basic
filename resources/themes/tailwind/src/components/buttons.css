@@ -6,7 +6,7 @@
   @apply dark:shadow dark:shadow-gray-800 dark:hover:bg-gray-600 dark:focus:ring-1 dark:focus:ring-gray-800 dark:disabled:bg-gray-700 dark:disabled:text-gray-400;
 }
 .btn {
-  @apply bg-basic btn-light-default btn-dark-default m-2 cursor-pointer rounded-lg border-0 border-solid px-4 py-1 text-center font-medium tracking-wider shadow-md first-letter:uppercase disabled:cursor-not-allowed;
+  @apply bg-basic btn-light-default btn-dark-default m-2 block cursor-pointer rounded-lg border-0 border-solid px-4 py-1 text-center font-medium tracking-wider shadow-md first-letter:uppercase disabled:cursor-not-allowed;
 }
 
 /* PRIMARY */
