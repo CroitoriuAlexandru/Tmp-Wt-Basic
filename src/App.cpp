@@ -1,6 +1,7 @@
 #include "include/App.h"
 #include "include/PageTwo.h"
 #include "include/Buttons.h"
+
 App::App()
 	: WContainerWidget()
 {

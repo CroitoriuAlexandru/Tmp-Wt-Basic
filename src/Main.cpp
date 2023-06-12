@@ -15,7 +15,6 @@ std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
 
 	// add mesage resource bundle from templates
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/General");
-	app->messageResourceBundle().use(app->appRoot() + "resources/templates/ThemeSwitcher");
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Navbar");
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Auth");
 
