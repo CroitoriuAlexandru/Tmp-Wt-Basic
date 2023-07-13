@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+    <message id="test" class=" ">
+        <div class=" ">${controls}</div>
+		<div></div>
+		<div></div>
+		<div></div>
+    </message>
+    <!-- <message id="test">
+        <div class="p-5 m-5 ring-4 ring-green-300">
+			${<if-register>} 
+				register .. 
+			${</if-register>}
+			${var-1 class="p-3 m-3 ring-2 ring-yellow-150"}
+			<label for="${aaa:var-1}">${aaa:var-1}</label>
+        </div>
+    </message> -->
+</messages>
