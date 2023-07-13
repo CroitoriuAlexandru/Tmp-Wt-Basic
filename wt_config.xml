@@ -247,7 +247,7 @@
            Maximum size of an incoming POST request. This value must be
            increased when the user is allowed to upload files.
          -->
-    <max-request-size>128</max-request-size>
+    <max-request-size>300</max-request-size>
 
     <!-- Maximum form data (KiB)
 

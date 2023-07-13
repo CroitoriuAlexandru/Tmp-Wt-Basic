@@ -10,16 +10,18 @@ std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
 	app->setTitle("Simple Application Template");
 	// add style file from tailwind
 
-	std::cout << "\n\n" << app->instance()->theme()->name() << "\n\n";
+	// std::cout << "\n\n" << app->instance()->theme()->name() << "\n\n";
 	app->useStyleSheet("resources/themes/tailwind/dist/tailwind.css");
 
 	// add mesage resource bundle from templates
-	app->messageResourceBundle().use(app->appRoot() + "resources/templates/General");
+	// app->messageResourceBundle().use(app->appRoot() + "resources/templates/General");
 	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Navbar");
-	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Auth");
+	// app->messageResourceBundle().use(app->appRoot() + "resources/templates/Auth");
+	app->messageResourceBundle().use(app->appRoot() + "resources/templates/test");
 
 	// add custom javascript files
 	app->require("resources/Js/Utility.js");
+	app->require("https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js");
 
 	app->instance()->setInternalPath("/");
 	// add application to root

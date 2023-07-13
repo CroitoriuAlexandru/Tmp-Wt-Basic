@@ -26,4 +26,30 @@
 
       </message>
 
+
+
+      <message id="stylus-dialog-template" class="">
+            <div class="flex">
+                  ${tree-view class="max-w-[100px] min-w-[100px]"}
+                  <div>
+                        <div>
+                              ${save-elem-btn}
+                              ${add-elem-sibling-btn}
+                              ${add-elem-child-btn}
+                              ${delete-elem-btn}
+                        </div>
+                    <div class="flex min-h-[400px] items-stretch">
+                        <div class="relative pt-5">
+                            <div class="absolute top-0 left-0">Default</div>
+                                        ${default-styles class="h-full"}
+                                  </div>
+                        <div class="relative pt-5">
+                            <div class="absolute top-0 left-0">Dark</div>
+                                        ${dark-styles class="h-full"}
+                                  </div>
+                    </div>
+                </div>
+            </div>
+        </message>
+
 </messages>
