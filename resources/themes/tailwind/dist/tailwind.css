@@ -2058,6 +2058,10 @@ svg{
   margin: 0.25rem
 }
 
+.m-10{
+  margin: 2.5rem
+}
+
 .m-3{
   margin: 0.75rem
 }
@@ -2154,10 +2158,6 @@ svg{
 
 .mt-6{
   margin-top: 1.5rem
-}
-
-.mt-4{
-  margin-top: 1rem
 }
 
 .block{
@@ -2360,11 +2360,6 @@ svg{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-.translate-x-1\/2{
-  --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
 .translate-x-full{
   --tw-translate-x: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
@@ -2540,6 +2535,11 @@ svg{
   background-color: rgb(176 177 177 / var(--tw-bg-opacity))
 }
 
+.bg-red-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity))
+}
+
 .bg-red-300{
   --tw-bg-opacity: 1;
   background-color: rgb(252 165 165 / var(--tw-bg-opacity))
@@ -2590,6 +2590,10 @@ svg{
 
 .p-5{
   padding: 1.25rem
+}
+
+.p-8{
+  padding: 2rem
 }
 
 .px-2{
@@ -2663,10 +2667,6 @@ svg{
 .ps-3{
   -webkit-padding-start: 0.75rem;
           padding-inline-start: 0.75rem
-}
-
-.pt-4{
-  padding-top: 1rem
 }
 
 .pt-5{
