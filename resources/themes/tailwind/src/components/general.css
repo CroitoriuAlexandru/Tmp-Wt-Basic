@@ -1,34 +1,3 @@
-.text-basic {
-  @apply text-gray-900 dark:text-gray-100;
-}
-
-.bg-basic {
-  @apply text-basic bg-gray-200 dark:bg-gray-500;
-}
-
-.hover-basic {
-  @apply hover:bg-gray-100 hover:text-gray-950 dark:hover:bg-gray-600 dark:hover:text-gray-200;
-}
-
-.active-basic {
-  @apply bg-gray-100 text-gray-950 dark:bg-gray-600 dark:text-gray-200;
-}
-/* custom default styles for elements */
-.bg-body {
-  @apply bg-neutral-0 text-neutral-900 dark:bg-neutral-700 dark:text-gray-50;
-}
-
-.bg-body-hover {
-  @apply bg-body hover:bg-neutral-50 dark:hover:bg-neutral-650;
-}
-
-.bg-body-hover-border {
-  @apply bg-body-hover border border-x-0 border-b-2 border-t-0 border-neutral-300 hover:border-solid;
-}
-
-.bg-body-active {
-  @apply bg-body border border-x-0 border-b-2 border-t-0 border-solid border-neutral-300 hover:bg-neutral-0 dark:hover:bg-neutral-700;
-}
 
 body {
   @apply m-0 bg-neutral-50 font-sans text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50;
@@ -37,22 +6,20 @@ body {
 a {
   @apply no-underline;
 }
-svg {
-  @apply text-gray-500;
-}
-/* Some flex utilitis */
-.flex-center {
-  @apply flex justify-center;
+
+.bg-body {
+  @apply bg-neutral-0 text-neutral-900 dark:bg-neutral-700 dark:text-gray-50;
 }
 
-.flex-center-center {
-  @apply flex-center items-center;
+.basic-widget {
+  @apply bg-body mx-0 my-3 rounded-md p-4 shadow-md sm:m-3;
 }
 
-.flex-col-center {
-  @apply flex flex-col items-center;
+.Wt-dialog:not(.stylus) {
+    @apply basic-widget !max-w-sm sm:max-w-none border-0 !mx-auto;
 }
 
-.flex-col-center-center {
-  @apply flex-col-center justify-center;
+.input-style-1 {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ps-10 box-border; 
+  /* rounded-lg !border-0 bg-white px-4 py-3 ps-10 font-medium shadow-md ring-0; */
 }

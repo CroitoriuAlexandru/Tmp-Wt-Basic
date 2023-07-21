@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+    <message id="stylus.edditor.titlebar">
+        <div class="flex items-center px-2 space-x-2 "> ${remove class="m-0 btn
+            btn-danger"} <div class="border-l-2 border-solid ps-2 space-y-2">
+                ${add-child-before class="m-0 btn btn-success"}
+                ${add-child-after class="m-0 btn btn-success"}
+            </div>
+            <div class="border-l-2 border-solid ps-2 space-y-2">
+                ${add-sibling-before class="m-0 me-2 btn btn-dark"}
+                ${add-sibling-after class="m-0 me-4 btn btn-dark"}
+            </div>
+            <div class="self-stretch border border-solid ms-0 "/>
+            <div class="relative inline-flex flex-col self-start ">
+                <div class="font-bold tracking-widest text-center ">Outline</div> ${<parent>}
+                    ${outline-parent-checkbox class=""}
+                    ${</parent>} ${outline-selected-checkbox class=""} </div>
+            <div class="self-stretch border border-solid"/>
+            <div class="relative self-start flex flex-col">
+                <div class="font-bold tracking-widest text-center ">togglers</div>
+                <div class="flex">
+                    <div class="flex flex-col ">
+                        ${display-default-checkbox class="text-xs "}
+                        ${display-default-hover-checkbox class="text-xs "}
+                    </div>
+                    <div class="self-stretch border border-solid mx-2"/>
+                    <div class="flex flex-col justify-stretch">
+                        ${display-dark-checkbox class="text-xs "}
+                        ${display-dark-hover-checkbox class="text-xs "}
+                    </div>
+                    <div class="self-stretch border border-solid mx-2"/>
+                    ${display-text-content-checkbox class="text-xs "} </div>
+            </div>
+        </div>
+    </message>
+    <message id="stylus.edditor.content">
+        <div class="flex max-w-[100vw] min-w-[200px] pe-3"> ${tree-view class="max-w-[150px]
+            min-w-[150px]"} <div class="flex min-h-[400px] items-stretch w-full"><div>
+            ${default-styles-display class="h-1/2 mb-6"}
+                    ${default-hover-styles-display class="h-1/2"}
+                </div>
+                <div>
+            ${dark-styles-display class="h-1/2 mb-6 "}
+                    ${dark-hover-styles-display class="h-1/2 "}
+                </div>
+            ${text-content-display class="relative w-full"} </div>
+        </div>
+    </message>
+    <message id="stylus.edditor.content.display">
+        <div class="text-center">${title}</div> ${text-display class="h-full"} </message>
+    <message id="stylus.sidebar.titlebar">
+        <div class="relative">${stylus}</div>
+        <div class="">${svg.plus class="btn p-1 m-1"}</div>
+    </message>
+    <message id="stylus.sidebar.content">
+        <div class="relative">${stylus}</div>
+        <div class=""></div>
+        <div class="">${container.wt class="p-0"}</div>
+    </message>
+    <message id="stylus.sidebar.folder.item">
+        <div class="-mx-2">
+            <div class="flex items-center">${svg.trash class="btn btn-danmger p-1 m-1"}
+            ${title}
+            ${svg.pencil class="btn p-1 m-1 ms-auto"}</div>
+        </div>
+    </message>
+    <message id="stylus.edditor.class.view">
+        <div class="">${stylus}</div>
+        <div class="bg-yellow-100 p-3">${stylus.class.padding}</div>
+    </message>
+    <message id="stylus2.edditor.treeview">
+        <div class="flex items-center justify-between border-b border-solid">
+            ${move-left-btn class="bg-[url(left-arrow-square.svg)] !p-3 rounded-none !m-0 bg-cover"}
+            ${refresh-btn class="bg-[url(refresh.svg)] !p-3 rounded-full !m-0 bg-cover !ms-auto"}
+            ${move-right-btn class="bg-[url(right-arrow-square.svg)] !p-3 rounded-none !m-0 bg-cover"}
+        </div>
+        <div class="min-h-[200px]  overflow-auto border-b border-solid resize-y">
+            ${tree-view class=""}
+        </div>
+    </message>
+    <message id="stylus2.treeview.label">
+        ${element}
+        ${btn.add.child.first}
+        ${btn.add.child.last}
+        ${btn.add.sibling.before}
+        ${btn.add.sibling.after}
+
+    </message>
+    <message id="stylus2.edditor.content">
+        ${stylus2.edditor.margin.padding class=""}
+    </message>
+    <message id="stylus2.edditor.margin.padding">
+        <div class="w-fit bg-gray-500 p-0.5 text-xs">
+            <div class="mb-1">
+                <div class="relative mt-1 flex justify-around">
+                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
+                        <button class="p-1">&lt;</button>
+                        <div class="border-x p-1 px-2">m-1</div>
+                        <button class="p-1">&gt;</button>
+                    </div>
+                    <div class="absolute bottom-0 -translate-y-1/2 font-bold ">All sides</div>
+                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
+                        <button class="p-1">&lt;</button>
+                        <div class="border-x p-1 px-2">p-1</div>
+                        <button class="p-1">&gt;</button>
+                    </div>
+                </div>
+                <div class="relative mt-1 flex justify-around">
+                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
+                        <button class="p-1">&lt;</button>
+                        <div class="border-x p-1 px-2">mx-1</div>
+                        <button class="p-1">&gt;</button>
+                    </div>
+                    <div class="absolute bottom-0 -translate-y-1/2 font-bold ">Vertical</div>
+                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
+                        <button class="p-1">&lt;</button>
+                        <div class="border-x p-1 px-2">px-1</div>
+                        <button class="p-1">&gt;</button>
+                    </div>
+                </div>
+                <div class="relative mt-1 flex justify-around">
+                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
+                        <button class="p-1">&lt;</button>
+                        <div class="border-x p-1 px-2">mx-1</div>
+                        <button class="p-1">&gt;</button>
+                    </div>
+                    <div class="absolute bottom-0 -translate-y-1/2 font-bold ">Horizontal</div>
+                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
+                        <button class="p-1">&lt;</button>
+                        <div class="border-x p-1 px-2">px-1</div>
+                        <button class="p-1">&gt;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="p-0.5">
+                <div class="mx-[40px] my-6 h-[150px] w-[280px]">
+                    <div class="relative flex h-full w-full items-center justify-center border-[3px] border-dashed">
+                        <div class="absolute -top-8 left-1/2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+                            <button class="p-1">&lt;</button>
+                            <div class="border-x p-1 px-2">mt-1</div>
+                            <button class="p-1">&gt;</button>
+                        </div>
+                        <div class="absolute -bottom-8 left-1/2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+                            <button class="p-1">&lt;</button>
+                            <div class="border-x p-1 px-2">mb-1</div>
+                            <button class="p-1">&gt;</button>
+                        </div>
+                        <div class="absolute -left-12 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+                            <button class="p-1">&lt;</button>
+                            <div class="border-x p-1 px-2">ml-1</div>
+                            <button class="p-1">&gt;</button>
+                        </div>
+                        <div class="absolute -right-12 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+                            <button class="p-1">&lt;</button>
+                            <div class="border-x p-1 px-2">mr-1</div>
+                            <button class="p-1">&gt;</button>
+                        </div>
+                        <div class="absolute left-1/2 top-2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+                            <button class="p-1">&lt;</button>
+                            <div class="border-x p-1 px-2">pt-1</div>
+                            <button class="p-1">&gt;</button>
+                        </div>
+                        <div class="absolute bottom-2 left-1/2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+                            <button class="p-1">&lt;</button>
+                            <div class="border-x p-1 px-2">pb-1</div>
+                            <button class="p-1">&gt;</button>
+                        </div>
+                        <div class="absolute left-10 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+                            <button class="p-1">&lt;</button>
+                            <div class="border-x p-1 px-2">pl-1</div>
+                            <button class="p-1">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </message>
+    <message id="stylus2.selection.box">
+        <div class="absolute right-10 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
+            <button class="p-1">&lt;</button>
+            <div class="border-x p-1 px-2">pr-1</div>
+            <button class="p-1">&gt;</button>
+        </div>
+    </message>
+</messages>

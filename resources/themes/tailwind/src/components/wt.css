@@ -1,0 +1,840 @@
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+/*
+ * Validators
+ */
+.Wt-invalid {
+  @apply bg-[#f7dada];
+}
+.Wt-valid {
+  @apply bg-[#daf7da];
+}
+
+/*
+ * Effects
+ */
+.Wt-animated {
+  -webkit-backface-visibility: hidden; /* avoids flicker on Chrome */
+}
+
+/*
+ * Outset
+ */
+.Wt-outset {
+  @apply border border-solid border-[#888888];
+}
+
+/*
+ * Wt-disabled
+ */
+span.Wt-disabled,
+fieldset.Wt-disabled legend {
+  @apply text-[gray];
+}
+
+/*
+ * WFormWidget
+ */
+.Wt-edit-emptyText {
+  @apply text-[gray];
+}
+
+/*
+ * Silk screen
+ */
+.Wt-dialogcover {
+  @apply h-full w-full fixed left-0 top-0;
+  background: rgb(204, 204, 204);
+}
+.Wt-dialogcover.in {
+  @apply opacity-50;
+  filter: alpha(opacity=50);
+}
+
+/*
+ * WStackedWidget
+ */
+.Wt-stack.Wt-animated {
+  @apply overflow-hidden relative;
+}
+
+/* This improves it on iPad and reduces artifacts on Safari.
+.Wt-animated > * {
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+}
+
+.Wt-animated h3 {
+  -webkit-transform: translate3d(0,0,0);
+}
+*/
+
+/*
+ * WCalendar
+ */
+.Wt-cal {
+  @apply p-0;
+}
+.Wt-cal table {
+  @apply bg-white text-center text-[10pt] leading-[140%] border-l-[#E0E0E0] border-l border-solid border-separate;
+}
+.Wt-cal table td {
+  @apply text-center;
+}
+.Wt-cal table.d1 {
+  @apply w-[170px];
+}
+.Wt-cal table.d1 td {
+  @apply w-5;
+}
+.Wt-cal table.d3 {
+  @apply w-[220px];
+}
+.Wt-cal table.d3 td {
+  @apply w-[30px];
+}
+.Wt-cal table.dlong {
+  @apply w-[560px];
+}
+.Wt-cal table.dlong td {
+  @apply w-20;
+}
+.Wt-cal caption {
+  @apply text-center m-0 p-0;
+  background: #eeeeee;
+}
+.Wt-cal caption select {
+  @apply cursor-pointer align-middle mx-0 my-0.5;
+}
+.Wt-cal-navbutton {
+  @apply text-white bg-[#6699CC] cursor-pointer align-middle block m-[3px];
+}
+.Wt-cal-year {
+  @apply align-middle;
+}
+.Wt-cal-year span {
+  @apply p-0.5 hover:bg-[#FFFFCC];
+}
+.Wt-cal th {
+  @apply text-[#666666] leading-[140%] border-r-[#E0E0E0] border-y-[#E0E0E0] border-0 border-r border-solid border-b border-t;
+}
+.Wt-cal td {
+  @apply text-[#003DB8] cursor-pointer text-center border-r-[#E0E0E0] border-b-[#E0E0E0] border-r border-solid border-b;
+}
+.Wt-cal-oom {
+  @apply text-[#999999] cursor-default bg-transparent;
+}
+.Wt-cal-oor {
+  @apply text-[#999999] cursor-default bg-transparent;
+}
+.Wt-cal-sel {
+  @apply bg-[#FFF19F];
+}
+.Wt-cal-now {
+  @apply text-[black];
+  background: #eeeeee;
+}
+
+/*
+ * WDateEdit
+ */
+.Wt-dateedit {
+  @apply bg-[url('date.gif')] bg-no-repeat bg-right-top pr-10;
+}
+
+/*
+ * WTimeEdit
+ */
+.Wt-timeedit {
+  @apply bg-[url('icon\_clock.gif')] bg-no-repeat bg-right-top pr-10;
+}
+
+/*
+ * WDatePicker
+ */
+.Wt-datepicker {
+  @apply bg-[#EEEEEE];
+}
+
+/*
+ * Wt-dateedit
+ */
+.Wt-dateedit::-ms-clear {
+  @apply hidden;
+}
+
+/*
+ * Wt-timeedit
+ */
+.Wt-timeedit::-ms-clear {
+  @apply hidden;
+}
+
+/*
+ * WDialog
+ */
+.Wt-dialog {
+  @apply bg-[#EEEEEE];
+}
+.Wt-dialog .closeicon {
+  @apply w-[13px] h-[13px] bg-[right_0px] cursor-default absolute right-[5px] top-[5px] hover:bg-[right_-13px];
+  background: transparent url(closeicons-dialog.png) no-repeat scroll right top;
+  vertical-align: center;
+}
+.Wt-dialog .titlebar {
+  @apply text-white pt-0.5 pb-[3px] px-1.5;
+  background: #888888;
+}
+.Wt-dialog .movable .titlebar {
+  @apply cursor-move;
+}
+.Wt-dialog .titlebar h4 {
+  @apply text-[110%] mx-0.5 my-0;
+}
+.Wt-dialog .body,
+.Wt-dialog .footer {
+  @apply px-1.5 py-1;
+}
+.Wt-dialog .footer {
+  @apply text-right;
+}
+
+/*
+ * WMenuItem
+ */
+.Wt-closeicon {
+  @apply h-2 w-[9px] text-[0px] cursor-default ml-0.5 mr-[5px] my-0 p-0 hover:bg-[right_-8px];
+  background: transparent url(closeicons-mi.png) no-repeat scroll right top;
+}
+
+/* 
+ * WMessageBox
+ */
+.Wt-dialog .Wt-msgbox-icon {
+  @apply block float-left mb-[-15px] w-[25px] h-[35px] mt-0 mx-[15px];
+}
+.Wt-dialog .Wt-msgbox-body {
+  @apply p-2.5;
+}
+.Wt-dialog .Wt-msgbox-text {
+  @apply overflow-auto;
+}
+
+/*
+ * WGridLayout
+ */
+.Wt-hrh2,
+.Wt-vsh2 {
+  @apply cursor-row-resize;
+}
+.Wt-vrh2,
+.Wt-hsh2 {
+  @apply cursor-col-resize;
+}
+.Wt-hrh2 {
+  background: url(splitter-v.png) no-repeat 50% 50%;
+}
+.Wt-vrh2 {
+  background: url(splitter-h.png) no-repeat 50% 50%;
+}
+.Wt-vrh2 {
+  @apply bg-[#CCC];
+}
+.Wt-hsh2,
+.Wt-vsh2 {
+  @apply bg-[#EEE];
+}
+.Wt-vrh2:hover,
+.Wt-hrh2:hover {
+  @apply bg-[#EEE];
+}
+
+/*
+ * WItemDelegate, when editable
+ */
+.Wt-delegate-edit {
+  @apply leading-[0px];
+}
+
+/*
+ * WPanel
+ */
+.Wt-panel {
+  @apply border-[3px] border-solid border-[#888888];
+  background: #eeeeee none repeat scroll 0%;
+}
+.Wt-panel .titlebar {
+  @apply text-white text-[10pt] pt-0 pb-[3px] px-1.5;
+  background: #888888;
+}
+.Wt-panel .body {
+  @apply clear-left px-1.5 py-1;
+  background: #ffffff;
+  -webkit-backface-visibility: hidden; /* !flicker on Chrome */
+}
+
+/*
+ * Icons, check-boxes in WMenuItem
+ */
+.Wt-icon {
+  @apply inline-block bg-no-repeat bg-[center_left] h-4 mr-2 px-2 py-0;
+}
+.Wt-chkbox {
+  @apply inline-block w-3 ml-0.5 mr-2.5;
+}
+
+/*
+ * WPopupMenu
+ */
+.Wt-popupmenu {
+  @apply absolute hidden text-[black] border z-[200] cursor-default m-0 p-0 border-solid border-[#666666];
+  background: white;
+  list-style: none;
+}
+.Wt-popupmenu li a {
+  @apply block px-2.5 py-0.5;
+}
+.Wt-popupmenu .Wt-padded {
+  @apply ml-6 mr-[3px] pr-6;
+}
+.Wt-popupmenu .active {
+  @apply text-[white];
+  background: blue;
+}
+.Wt-popupmenu .Wt-disabled,
+.Wt-popupmenu .Wt-sectheader.active {
+  @apply text-[#AAA];
+}
+.Wt-popupmenu .submenu {
+  @apply bg-[url(right-arrow.gif)] bg-no-repeat bg-[right_center];
+}
+.Wt-popupmenu .Wt-separator {
+  @apply mx-[3px] my-0 p-0 border-t-[#CCCCCC] border-b-[#DDDDDD] border-t border-solid border-b;
+}
+.Wt-popupmenu .Wt-sectheader,
+.Wt-popupmenu .Wt-sectheader.active {
+  @apply text-[#AAA];
+  background: transparent;
+}
+
+/*
+ * WProgressBar
+ */
+.Wt-progressbar {
+  @apply relative border overflow-hidden text-white font-[bold] w-[200px] h-[1em] leading-[1em] border-solid border-[black];
+  background: #333;
+}
+.Wt-progressbar .Wt-pgb-bar {
+  @apply absolute h-full left-0 top-0;
+  background: #292;
+}
+.Wt-progressbar .Wt-pgb-label {
+  @apply absolute w-full text-center text-[0.8em] left-0 top-[0.1em];
+}
+
+/*
+ * WPushButton
+ */
+.Wt-btn.Wt-btn-default {
+  @apply font-[bold];
+}
+.Wt-btn img {
+  @apply align-middle;
+}
+.Wt-btn.with-label img {
+  @apply pr-2.5;
+}
+
+/*
+ * WResizable
+ */
+.Wt-resizable {
+  @apply bg-[url(resizable.png)] bg-no-repeat bg-scroll bg-right-bottom;
+}
+
+/*
+ * WSlider
+ */
+.Wt-slider-h {
+  background: url(sliderbg-h.png) repeat-x scroll left center;
+}
+.Wt-slider-h .Wt-slider-bg {
+  @apply mx-[5px] my-0;
+}
+.Wt-slider-v {
+  background: url(sliderbg-v.png) repeat-y scroll center top;
+}
+.Wt-slider-v .Wt-slider-bg {
+  @apply mx-0 my-[5px];
+}
+.Wt-slider-h .handle {
+  @apply cursor-pointer;
+  background: url(slider-thumb-h.gif) no-repeat scroll center bottom;
+}
+.Wt-slider-v .handle {
+  @apply cursor-pointer;
+  background: url(slider-thumb-v.gif) no-repeat scroll right center;
+}
+
+/*
+ * WSlider - disabled
+ */
+.Wt-slider-v.Wt-disabled .handle {
+  background: url(slider-thumb-v-disabled.gif) no-repeat scroll right center;
+}
+.Wt-slider-h.Wt-disabled {
+  background: url(sliderbg-h-disabled.png) repeat-x scroll left center;
+}
+.Wt-slider-v.Wt-disabled {
+  background: url(sliderbg-v-disabled.png) repeat-y scroll center top;
+}
+.Wt-slider-h.Wt-disabled .handle {
+  @apply cursor-auto;
+  background: url(slider-thumb-h-disabled.gif) no-repeat scroll center bottom;
+}
+.Wt-slider-v.Wt-disabled .handle {
+  @apply cursor-auto;
+  background: url(slider-thumb-v-disabled.gif) no-repeat scroll right center;
+}
+
+/*
+ * WSpinBox
+ */
+.Wt-spinbox {
+  @apply bg-[url('spin-buttons.png')] bg-no-repeat bg-[right_center] pr-4;
+}
+.Wt-spinbox::-ms-clear {
+  @apply hidden;
+}
+.Wt-spinbox.up {
+  @apply bg-[url('spin-buttons-up.png')];
+}
+.Wt-spinbox.dn {
+  @apply bg-[url('spin-buttons-dn.png')];
+}
+
+/* 
+ * WSuggestionPopup
+ */
+.Wt-suggest {
+  @apply bg-[#e0ecff] text-[#1010cc] border cursor-default text-[smaller] overflow-y-auto m-0 p-0.5 border-solid border-[#666666];
+  list-style: none;
+}
+.Wt-suggest li {
+  @apply px-[3px] py-0;
+}
+.Wt-suggest .active {
+  @apply bg-[#C3D9FF];
+}
+.Wt-suggest-dropdown {
+  @apply bg-[url('dropdown.png')] bg-no-repeat bg-[right_center];
+}
+
+/*
+ * WTabWidget
+ */
+.Wt-tabs {
+  @apply w-full list-none list-outside overflow-auto mb-1 m-0 pt-2.5 pb-0 px-0 after:content-[""] after:block after:h-0 after:clear-both;
+  zoom: 1;
+  background: transparent url(tab_b.gif) repeat-x scroll center bottom;
+}
+.Wt-tabs li {
+  @apply float-left block cursor-pointer text-[small] font-[bold] border-b-[#84B0C7] border-b border-solid;
+  background: transparent url(tab_r.gif) no-repeat scroll right top;
+}
+body.Wt-rtl .Wt-tabs a {
+  @apply float-right;
+}
+.Wt-tabs .itemselected {
+  @apply bg-[100%_-150px];
+}
+.Wt-tabs a {
+  @apply block whitespace-nowrap text-[#1A419D] px-[9px] py-[5px] border-b-0;
+  background: transparent url(tab_l.gif) no-repeat scroll left top;
+}
+.Wt-tabs .itemselected a {
+  @apply bg-[0%_-150px];
+}
+.Wt-tabs .Wt-closable a {
+  @apply mr-[13px];
+}
+.Wt-tabs .closeicon {
+  @apply h-[13px] w-[13px] cursor-default float-right ml-0 mr-1 mt-1.5 mb-0 p-0 border-0 hover:bg-[right_-13px];
+  background: transparent url(closeicons-tab.png) no-repeat scroll right top;
+}
+.Wt-tabs {
+  clear-after: both;
+}
+
+/*
+ * XHTML Tooltips
+ */
+.Wt-tooltip {
+  @apply absolute max-w-[700px] bg-[#ffffcc] border text-[smaller] z-[1000] px-0.5 py-px border-solid border-[black];
+  font-family: sans-serif;
+}
+
+/*
+ * WTree(node)
+ */
+.Wt-tree {
+  @apply text-[9pt] cursor-default whitespace-nowrap;
+  font-family: verdana, helvetica, tahoma, sans-serif;
+}
+.Wt-tree ul {
+  @apply m-0 pl-[8px];
+  list-style: none;
+}
+body.Wt-rtl .Wt-tree ul {
+  @apply pl-0 pr-5;
+}
+
+/* nodes */
+.Wt-tree.Wt-trunk,
+.Wt-tree .Wt-item.Wt-trunk {
+  @apply bg-[url(line-trunk.gif)] bg-repeat-y;
+}
+body.Wt-rtl .Wt-tree.Wt-trunk,
+body.Wt-rtl .Wt-tree .Wt-item.Wt-trunk {
+  @apply bg-[top_right];
+}
+.Wt-tree .Wt-item.Wt-end {
+  @apply bg-[url(line-last.gif)] bg-no-repeat;
+}
+body.Wt-rtl .Wt-tree .Wt-item.Wt-end {
+  @apply bg-[url(line-last-rtl.gif)] bg-[top_right];
+}
+.Wt-tree div.Wt-root {
+  @apply hidden;
+}
+.Wt-tree ul.Wt-root {
+  @apply pl-0;
+}
+body.Wt-rtl .Wt-tree ul.Wt-root {
+  @apply pr-0;
+}
+.Wt-tree .Wt-ctrl {
+  @apply float-left block w-[19px] h-[18px];
+}
+body.Wt-rtl .Wt-tree .Wt-ctrl {
+  @apply float-right;
+}
+.Wt-tree .Wt-noexpand {
+  @apply bg-[url(line-middle.gif)] bg-no-repeat;
+}
+body.Wt-rtl .Wt-tree .Wt-noexpand {
+  @apply bg-[url(line-middle-rtl.gif)] bg-[top_right];
+}
+.Wt-tree .cols-row {
+  @apply float-right;
+}
+body.Wt-rtl .Wt-tree .cols-row {
+  @apply float-left;
+}
+
+/* selection */
+.Wt-tree .Wt-selected {
+  @apply bg-[#FFFFAA];
+}
+
+/* label */
+.Wt-tree .Wt-label {
+  @apply leading-[150%] px-0.5 py-0;
+}
+.Wt-treetable div.Wt-header {
+  @apply text-[9pt] font-[bold] cursor-default bg-[#EEEEEE] whitespace-normal text-ellipsis px-0 py-[3px];
+  font-family: verdana, helvetica, tahoma, sans-serif;
+}
+.Wt-sbspacer {
+  @apply float-right w-4 h-px hidden border-0;
+}
+body.Wt-rtl .Wt-sbspacer {
+  @apply float-left;
+}
+
+/*
+ * WAbstractItemView (WTableView and WTreeView)
+ */
+.Wt-itemview .Wt-headerdiv {
+  @apply select-none overflow-hidden w-full;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+}
+.Wt-itemview .Wt-tv-rh {
+  @apply float-right w-1 cursor-col-resize hover:bg-[#DDDDDD];
+}
+.Wt-itemview .Wt-disabled .Wt-tv-rh {
+  @apply cursor-default hover:bg-transparent;
+}
+body.Wt-rtl .Wt-itemview .Wt-tv-rh {
+  @apply float-left;
+}
+.Wt-itemview div.Wt-tv-no-rh {
+  @apply w-0 cursor-default ml-1;
+}
+body.Wt-rtl .Wt-itemview div.Wt-tv-no-rh {
+  @apply ml-0 mr-1;
+}
+
+/* sort handles */
+.Wt-itemview .Wt-tv-sh {
+  @apply float-right w-4 h-4 cursor-pointer pb-1.5;
+}
+.Wt-itemview .Wt-disabled .Wt-tv-sh {
+  @apply cursor-default;
+  background: url(sort-arrow-disabled.gif) no-repeat 0 6px;
+}
+body.Wt-rtl .Wt-itemview .Wt-tv-sh {
+  @apply float-left;
+}
+.Wt-itemview {
+  @apply text-[9pt] cursor-default whitespace-nowrap;
+  font-family: verdana, helvetica, tahoma, sans-serif;
+}
+.Wt-itemview .Wt-spacer {
+  background: url(loading.png);
+}
+.Wt-itemview .Wt-headerdiv,
+.Wt-itemview .Wt-headerdiv .Wt-tv-rowc,
+.Wt-itemview th {
+  @apply bg-[#EEEEEE];
+}
+.Wt-itemview th,
+.Wt-itemview th .Wt-tv-br {
+  @apply overflow-hidden;
+}
+.Wt-itemview .Wt-header .Wt-label {
+  @apply font-[bold] text-ellipsis overflow-hidden whitespace-nowrap h-full; /* needed for IE only */
+}
+.Wt-itemview .Wt-header .Wt-disabled .Wt-label {
+  @apply text-[gray];
+}
+.Wt-itemview .Wt-header .Wt-wwrap .Wt-label {
+  @apply overflow-visible whitespace-normal;
+}
+.Wt-itemview .Wt-tv-sh-none {
+  background: url(sort-arrow-none.gif) no-repeat 0 6px;
+}
+.Wt-itemview .Wt-tv-sh-up {
+  background: url(sort-arrow-up.gif) no-repeat 0 6px;
+}
+.Wt-itemview .Wt-tv-sh-down {
+  background: url(sort-arrow-down.gif) no-repeat 0 6px;
+}
+
+/* selection */
+.Wt-itemview .Wt-selected {
+  @apply bg-[#FFFFAA];
+}
+
+/* item drag & drop */
+.Wt-itemview .Wt-drop-site {
+  @apply bg-[#EEEEEE];
+  outline: 1px dotted black;
+}
+.Wt-drop-site-top {
+  @apply shadow-[0_2px_0_#000_inset] absolute w-full h-full pointer-events-none left-0 top-0;
+}
+.Wt-drop-site-bottom {
+  @apply shadow-[0_-2px_0_#000_inset] absolute w-full h-full pointer-events-none left-0 top-0;
+}
+
+/*
+ * WTableView
+ */
+body.Wt-ltr .Wt-tableview .Wt-header .Wt-tv-c {
+  @apply pl-1.5;
+}
+body.Wt-rtl .Wt-tableview .Wt-header .Wt-tv-c {
+  @apply pr-1.5;
+}
+.Wt-tableview .Wt-tv-contents .Wt-tv-c,
+.Wt-plaintable .Wt-tv-c {
+  @apply overflow-hidden text-ellipsis px-[3px] py-0;
+}
+.Wt-tableview .Wt-tv-contents img.icon,
+.Wt-tableview .Wt-plaintable img.icon,
+.Wt-tableview .Wt-tv-contents input.icon,
+.Wt-tableview .Wt-plaintable input.icon {
+  @apply align-middle ml-0 mr-[3px] mt-0 mb-0.5;
+}
+.Wt-tableview .Wt-spacer {
+  @apply relative overflow-hidden;
+}
+
+/* header */
+.Wt-tableview {
+  @apply whitespace-nowrap;
+}
+.Wt-tableview th {
+  @apply p-0;
+}
+.Wt-tableview table {
+  @apply bg-left-bottom;
+}
+.Wt-tableview .Wt-tv-contents {
+  @apply absolute;
+}
+
+/* borders */
+body.Wt-ltr .Wt-tableview .Wt-tv-br,
+body.Wt-ltr .Wt-tableview .Wt-tv-contents .Wt-tv-c,
+body.Wt-ltr .Wt-tableview .Wt-plaintable tbody .Wt-tv-c {
+  @apply border-r-white border-r border-solid;
+}
+body.Wt-rtl .Wt-tableview .Wt-tv-br,
+body.Wt-rtl .Wt-tableview .Wt-tv-contents .Wt-tv-c,
+body.Wt-rtl .Wt-tableview .Wt-plaintable tbody .Wt-tv-c {
+  @apply border-l-white border-l border-solid;
+}
+
+/*
+ * WTreeView
+ */
+
+/* Layout styling */
+.Wt-treeview ul {
+  @apply m-0 pl-5;
+  list-style: none;
+}
+body.Wt-rtl .Wt-treeview ul {
+  @apply pl-0 pr-5;
+}
+.Wt-treeview ul.Wt-tv-root {
+  @apply pl-0;
+}
+body.Wt-rtl .Wt-treeview ul.Wt-tv-root {
+  @apply pr-0;
+}
+.Wt-treeview .Wt-tv-row {
+  @apply float-right overflow-hidden;
+}
+body.Wt-rtl .Wt-treeview .Wt-tv-row {
+  @apply float-left;
+}
+.Wt-treeview .Wt-tv-row .Wt-tv-c {
+  @apply float-left block text-ellipsis overflow-hidden px-[3px] py-0 whitespace-nowrap;
+}
+body.Wt-rtl .Wt-treeview .Wt-tv-row .Wt-tv-c {
+  @apply float-right;
+}
+.Wt-treeview .Wt-tv-c {
+  @apply px-[3px] py-0;
+}
+.Wt-treeview img.icon,
+.Wt-treeview input.icon {
+  @apply align-middle;
+}
+.Wt-treeview img.icon,
+.Wt-treeview input.icon {
+  @apply ml-0 mr-[3px] mt-0 mb-0.5;
+}
+body.Wt-rtl .Wt-treeview img.icon,
+body.Wt-rtl .Wt-treeview input.icon {
+  @apply ml-[3px] mr-0 mt-0 mb-0.5;
+}
+.Wt-treeview .Wt-header .Wt-tv-c {
+  @apply ml-[7px] p-0;
+}
+body.Wt-rtl .Wt-treeview .Wt-header .Wt-tv-c {
+  @apply ml-0 mr-[7px];
+}
+body.Wt-ltr .Wt-treeview .Wt-tv-br,               /* header */
+body.Wt-ltr .Wt-treeview li .Wt-tv-row .Wt-tv-c {
+  @apply mr-0 border-r-[white] border-r border-solid; /* data */
+}
+body.Wt-rtl .Wt-treeview .Wt-tv-br,               /* header */
+body.Wt-rtl .Wt-treeview li .Wt-tv-row .Wt-tv-c {
+  @apply ml-0 border-l-[white] border-l border-solid; /* data */
+}
+.Wt-treeview .Wt-scroll {
+  @apply overflow-auto h-[22px];
+}
+.Wt-treeview .Wt-scroll div {
+  @apply h-px;
+}
+
+/* nodes */
+.Wt-treeview .Wt-trunk {
+  @apply bg-[url(line-trunk.gif)] bg-repeat-y;
+}
+body.Wt-rtl .Wt-treeview .Wt-trunk {
+  @apply bg-[top_right];
+}
+.Wt-treeview .Wt-end {
+  @apply bg-[url(tv-line-last.gif)] bg-no-repeat bg-[0_center];
+}
+body.Wt-rtl .Wt-treeview .Wt-end {
+  @apply bg-[url(tv-line-last-rtl.gif)] bg-no-repeat bg-[right_center];
+}
+.Wt-treeview .Wt-ctrl {
+  @apply float-left w-[19px];
+}
+body.Wt-rtl .Wt-treeview .Wt-ctrl {
+  @apply float-right w-[19px];
+}
+.Wt-treeview .Wt-ctrl.expand {
+  @apply bg-[url(nav-plus.gif)] bg-no-repeat bg-[0_center];
+}
+body.Wt-rtl .Wt-treeview .Wt-ctrl.expand {
+  @apply bg-[url(nav-plus-rtl.gif)];
+}
+.Wt-treeview .Wt-ctrl.collapse {
+  @apply bg-[url(nav-minus.gif)] bg-no-repeat bg-[0_center];
+}
+body.Wt-rtl .Wt-treeview .Wt-ctrl.collapse {
+  @apply bg-[url(nav-minus-rtl.gif)];
+}
+.Wt-treeview .Wt-ctrl.noexpand {
+  @apply bg-[url(line-middle.gif)] bg-no-repeat bg-[0_center];
+}
+body.Wt-rtl .Wt-treeview .Wt-ctrl.noexpand {
+  @apply bg-[url(line-middle-rtl.gif)];
+}
+
+/*
+ * WTreeView and WTableView default paging bar
+ */
+.Wt-pagingbar {
+  @apply text-center h-[35px] leading-[35px] p-0.5;
+}
+.Wt-pagingbar span {
+  @apply mx-1 my-0;
+}
+.Wt-pagingbar button {
+  @apply mx-1 my-0;
+}
+
+/*
+ * For Ext::TableView
+ */
+table.x-grid3-row-table {
+  @apply table-fixed;
+}
+.Wt-filedropzone {
+  @apply w-[200px] h-[200px] bg-[lightgrey] border-[thick] border-dashed border-[grey];
+}
+.Wt-filedropzone.Wt-dropzone-hover {
+  @apply border-[green];
+}
+.Wt-filedropzone.Wt-dropzone-hover * {
+  @apply pointer-events-none;
+}
+.Wt-fileupload-hidden {
+  @apply hidden;
+}
+.Wt-filedropzone.Wt-dropzone-dragstyle {
+  @apply relative z-[20001];
+}
+.Wt-filedropzone.Wt-dropzone-indication {
+  @apply border-[green];
+}
+.Wt-dropcover {
+  @apply fixed w-full h-full z-[-100] left-0 top-0;
+}
+.Wt-dropcover.Wt-dropzone-dragstyle {
+  @apply z-[20000];
+}

@@ -9,10 +9,10 @@ SRCDIR = ./src
 OBJDIR = ./src/obj
 DBONAME = test.db
 # Linking lib
-LDFLAGS =  -lwthttp -lwt -lwtdbo -lwtdbosqlite3 -lpthread
+LDFLAGS =  -lwthttp -lwt -lwtdbo -lwtdbosqlite3 -lpthread -lboost_filesystem
 
 # Runtime lib
-RLIB = --docroot . -c ./wt_config.xml --http-address 0.0.0.0 --http-port 9091
+RLIB = --docroot . -c ./wt_config.xml --http-address 0.0.0.0 --http-port 9090
 
 
 ############## Creating variables #############

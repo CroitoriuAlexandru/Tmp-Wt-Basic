@@ -1,35 +1,7 @@
 #include "include/App.h"
-#include <Wt/WApplication.h>
-#include <Wt/WCssTheme.h>
 #include <Wt/WServer.h>
 #include <Wt/Dbo/Exception.h>
 
-std::unique_ptr<Wt::WApplication> createApplication(const Wt::WEnvironment &env)
-{
-	auto app = std::make_unique<Wt::WApplication>(env);
-	app->setTitle("Simple Application Template");
-	// add style file from tailwind
-
-	// std::cout << "\n\n" << app->instance()->theme()->name() << "\n\n";
-	app->useStyleSheet("resources/themes/tailwind/dist/tailwind.css");
-
-	// add mesage resource bundle from templates
-	// app->messageResourceBundle().use(app->appRoot() + "resources/templates/General");
-	app->messageResourceBundle().use(app->appRoot() + "resources/templates/Navbar");
-	// app->messageResourceBundle().use(app->appRoot() + "resources/templates/Auth");
-	app->messageResourceBundle().use(app->appRoot() + "resources/templates/test");
-
-	// add custom javascript files
-	app->require("resources/Js/Utility.js");
-	app->require("https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js");
-
-	app->instance()->setInternalPath("/");
-	// add application to root
-	app->root()->addWidget(std::make_unique<App>());
-	// app->setBodyClass(" ");
-
-	return app;
-}
 
 int main(int argc, char **argv)
 {
@@ -38,7 +10,9 @@ int main(int argc, char **argv)
 		// Server setup
 		Wt::WServer server{argc, argv, WTHTTP_CONFIGURATION};
 
-		server.addEntryPoint(Wt::EntryPointType::Application, createApplication);
+		server.addEntryPoint(Wt::EntryPointType::Application,  [](Wt::WEnvironment const &env) {
+			return std::make_unique<App>(env);
+		});
 
 		server.run();
 	}
