@@ -8,6 +8,16 @@
 #include <Wt/WDialog.h>
 #include "StylusTreeView.h"
 
+class StylusClassComboBox : public Wt::WContainerWidget
+{
+public:
+    StylusClassComboBox(std::vector<std::string> classNames);
+    Wt::WComboBox *comboBox_;
+
+private:
+    Wt::WPushButton *btn_next_;
+    Wt::WPushButton *btn_prev_;
+};
 
 
 class StylusEdditor2 : public Wt::WDialog
@@ -22,13 +32,10 @@ private:
 
     std::shared_ptr<StylusState> stylusState_;
 
-    
     Wt::WString sourcePath_ = "resources/xml/";
     Wt::WString templateName_ = "";
-
-
-
     Wt::WTemplate* treeview_temp_;
+
 
     void createTitleBarControls();
     void createDialogTreeView();

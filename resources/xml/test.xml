@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <messages>
     <message id="test">
-        <div class="asd">child before</div>
-        <div class="? ">child before</div>
+        <div class=""><div class="">child before</div>child before</div>
         <div class="caw">child before</div>
         <div class="">child before</div>
-        <div class="asdf">child before</div>
+        <div class="asd">child before</div>
+        <div class="? asdf">child before</div>
     </message>
 </messages>

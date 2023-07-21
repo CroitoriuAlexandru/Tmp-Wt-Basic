@@ -68,118 +68,92 @@
         <div class="">${stylus}</div>
         <div class="bg-yellow-100 p-3">${stylus.class.padding}</div>
     </message>
-    <message id="stylus2.edditor.treeview">
+    <message id="stylus2.edditor">
         <div class="flex items-center justify-between border-b border-solid">
             ${move-left-btn class="bg-[url(left-arrow-square.svg)] !p-3 rounded-none !m-0 bg-cover"}
             ${refresh-btn class="bg-[url(refresh.svg)] !p-3 rounded-full !m-0 bg-cover !ms-auto"}
             ${move-right-btn class="bg-[url(right-arrow-square.svg)] !p-3 rounded-none !m-0 bg-cover"}
         </div>
-        <div class="min-h-[200px]  overflow-auto border-b border-solid resize-y">
+        <div class="min-h-[200px] overflow-auto border-b border-solid resize-y">
             ${tree-view class=""}
         </div>
-    </message>
-    <message id="stylus2.treeview.label">
-        ${element}
-        ${btn.add.child.first}
-        ${btn.add.child.last}
-        ${btn.add.sibling.before}
-        ${btn.add.sibling.after}
-
-    </message>
-    <message id="stylus2.edditor.content">
-        ${stylus2.edditor.margin.padding class=""}
-    </message>
-    <message id="stylus2.edditor.margin.padding">
-        <div class="w-fit bg-gray-500 p-0.5 text-xs">
-            <div class="mb-1">
-                <div class="relative mt-1 flex justify-around">
-                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
-                        <button class="p-1">&lt;</button>
-                        <div class="border-x p-1 px-2">m-1</div>
-                        <button class="p-1">&gt;</button>
-                    </div>
-                    <div class="absolute bottom-0 -translate-y-1/2 font-bold ">All sides</div>
-                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
-                        <button class="p-1">&lt;</button>
-                        <div class="border-x p-1 px-2">p-1</div>
-                        <button class="p-1">&gt;</button>
-                    </div>
-                </div>
-                <div class="relative mt-1 flex justify-around">
-                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
-                        <button class="p-1">&lt;</button>
-                        <div class="border-x p-1 px-2">mx-1</div>
-                        <button class="p-1">&gt;</button>
-                    </div>
-                    <div class="absolute bottom-0 -translate-y-1/2 font-bold ">Vertical</div>
-                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
-                        <button class="p-1">&lt;</button>
-                        <div class="border-x p-1 px-2">px-1</div>
-                        <button class="p-1">&gt;</button>
-                    </div>
-                </div>
-                <div class="relative mt-1 flex justify-around">
-                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
-                        <button class="p-1">&lt;</button>
-                        <div class="border-x p-1 px-2">mx-1</div>
-                        <button class="p-1">&gt;</button>
-                    </div>
-                    <div class="absolute bottom-0 -translate-y-1/2 font-bold ">Horizontal</div>
-                    <div class="flex w-fit items-center justify-center rounded-md border bg-gray-50 text-center">
-                        <button class="p-1">&lt;</button>
-                        <div class="border-x p-1 px-2">px-1</div>
-                        <button class="p-1">&gt;</button>
-                    </div>
-                </div>
-            </div>
-            <div class="p-0.5">
-                <div class="mx-[40px] my-6 h-[150px] w-[280px]">
-                    <div class="relative flex h-full w-full items-center justify-center border-[3px] border-dashed">
-                        <div class="absolute -top-8 left-1/2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-                            <button class="p-1">&lt;</button>
-                            <div class="border-x p-1 px-2">mt-1</div>
-                            <button class="p-1">&gt;</button>
-                        </div>
-                        <div class="absolute -bottom-8 left-1/2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-                            <button class="p-1">&lt;</button>
-                            <div class="border-x p-1 px-2">mb-1</div>
-                            <button class="p-1">&gt;</button>
-                        </div>
-                        <div class="absolute -left-12 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-                            <button class="p-1">&lt;</button>
-                            <div class="border-x p-1 px-2">ml-1</div>
-                            <button class="p-1">&gt;</button>
-                        </div>
-                        <div class="absolute -right-12 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-                            <button class="p-1">&lt;</button>
-                            <div class="border-x p-1 px-2">mr-1</div>
-                            <button class="p-1">&gt;</button>
-                        </div>
-                        <div class="absolute left-1/2 top-2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-                            <button class="p-1">&lt;</button>
-                            <div class="border-x p-1 px-2">pt-1</div>
-                            <button class="p-1">&gt;</button>
-                        </div>
-                        <div class="absolute bottom-2 left-1/2 flex min-w-[50px] -translate-x-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-                            <button class="p-1">&lt;</button>
-                            <div class="border-x p-1 px-2">pb-1</div>
-                            <button class="p-1">&gt;</button>
-                        </div>
-                        <div class="absolute left-10 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-                            <button class="p-1">&lt;</button>
-                            <div class="border-x p-1 px-2">pl-1</div>
-                            <button class="p-1">&gt;</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="">
+            ${stylus2.edditor.margin.padding class="px-6"}
         </div>
     </message>
-    <message id="stylus2.selection.box">
-        <div class="absolute right-10 top-1/2 flex min-w-[50px] -translate-y-1/2 items-center justify-center rounded-md border bg-gray-50 text-center">
-            <button class="p-1">&lt;</button>
-            <div class="border-x p-1 px-2">pr-1</div>
-            <button class="p-1">&gt;</button>
+    <message id="stylus2.edditor.margin.padding">
+        <div class="w-full mb-4 text-xs flex flex-col items-center">
+            <div class="mb-2 self-stretch">
+                <div class="flex justify-between">
+                    <div class="font-bold ms-5">Margin</div>
+                    <div class="font-bold me-5">Padding</div>
+                </div>
+                <div class="relative flex justify-between">
+                    <div class="flex w-fit rounded-md border bg-gray-50">
+                        ${margin.all.control class="flex items-stretch justify-center"}
+                    </div>
+                    <div class="font-bold">All sides</div>
+                    <div class="flex w-fit rounded-md border bg-gray-50">
+                        ${padding.all.control class="flex items-stretch justify-center"}
+                    </div>
+                </div>
+                <div class="relative mt-1 flex justify-between">
+                    <div class="flex w-fit rounded-md border bg-gray-50">
+                        ${margin.vertical.control class="flex items-stretch justify-center"}
+                    </div>
+                    <div class="font-bold">Vertical</div>
+                    <div class="flex w-fit rounded-md border bg-gray-50">
+                        ${padding.vertical.control class="flex items-stretch justify-center"}
+                    </div>
+                </div>
+                <div class="relative mt-1 flex justify-between">
+                    <div class="flex w-fit rounded-md border bg-gray-50">
+                        ${margin.horizontal.control class="flex items-stretch justify-center"}
+                    </div>
+                    <div class="font-bold">Horizontal</div>
+                    <div class="flex w-fit rounded-md border bg-gray-50">
+                        ${padding.horizontal.control class="flex items-stretch justify-center"}
+                    </div>
+                </div>
+            </div>
+            <div class="p-px w-fit">
+                <div class="h-[130px] w-[200px] pt-3 pb-4">
+                    <div class="relative h-full w-full border-[5px] border-dashed border-gray-400 flex flex-col justify-between items-stretch">
+                        <div class="flex flex-col w-fit mx-auto -mt-7">
+                            <div class="flex rounded-md border bg-gray-50 mb-1">
+                                ${margin.top.control class="flex justify-center"}
+                            </div>
+                            <div class="flex rounded-md border bg-gray-50">
+                                ${padding.top.control class="flex justify-center"}
+                            </div>
+                        </div>
+                        <div class="-mx-12 flex justify-between">
+                            <div class="flex rounded-md border bg-gray-50">
+                                ${margin.right.control class="flex justify-center"}
+                            </div>
+                            <div class="flex rounded-md border bg-gray-50">
+                                ${margin.left.control class="flex justify-center"}
+                            </div>
+                        </div>
+                        <div class="-mx-6 flex justify-between">
+                            <div class="flex rounded-md border bg-gray-50">
+                                ${padding.left.control class="flex justify-center"}
+                            </div>
+                            <div class="flex rounded-md border bg-gray-50">
+                                ${padding.right.control class="flex justify-center"}
+                            </div>
+                        </div>
+                        <div class="flex flex-col w-fit mx-auto -mb-7">
+                            <div class="flex rounded-md border bg-gray-50 mb-1">
+                                ${margin.bottom.control class="flex justify-center"}
+                            </div>
+                            <div class="flex rounded-md border bg-gray-50">
+                                ${padding.bottom.control class="flex justify-center"}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </message>
 </messages>
