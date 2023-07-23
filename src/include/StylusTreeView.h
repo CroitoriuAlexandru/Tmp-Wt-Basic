@@ -34,17 +34,18 @@ class StylusTreeView : public Wt::WTree
 {
 public:
     StylusTreeView(std::shared_ptr<StylusState> stylusState);
-
+    ~StylusTreeView();
     Wt::WTreeNode* selectedTreeNode;
     bool selectedNodeFound;
     
     Wt::Signal<>& templateModified() { return templateModified_; }
     Wt::Signal<tinyxml2::XMLElement*>& selectionChanged() { return selectionChanged_; }
+
+    void createTree();
+    std::unique_ptr<TreeNode> createNodeTree(tinyxml2::XMLElement* element);
 private:
     std::shared_ptr<StylusState> stylusState_;
 
-    std::unique_ptr<TreeNode> createNodeTree(tinyxml2::XMLElement* element);
-    void createChildNodes();
 
     void moveElementUp(tinyxml2::XMLElement* element);
     void moveElementDown(tinyxml2::XMLElement* element);

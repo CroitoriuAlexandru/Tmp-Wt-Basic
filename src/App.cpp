@@ -50,7 +50,7 @@ App::App(const Wt::WEnvironment &env)
 	// temp_test->bindString("button", Wt::WString::tr("button"));
 	auto container = temp_test->bindWidget("container", std::make_unique<Wt::WTemplate>(Wt::WString::tr("container")));
 	auto btn_conteiner = container->bindWidget("button", std::make_unique<Wt::WPushButton>("Hello World!"));
-	root()->addChild(std::make_unique<StylusSidebar>());
+	// root()->addChild(std::make_unique<StylusSidebar>());
 
 	// temp_test->resolveWidget("btn")->setStyleClass(Wt::WString::tr("button"));
 

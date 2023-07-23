@@ -43,6 +43,19 @@ StylusTreeView::StylusTreeView(std::shared_ptr<StylusState> stylusState)
     // set defaults
 	setSelectionMode(Wt::SelectionMode::Single);
 	addStyleClass("w-auto h-auto");
+
+
+}
+
+StylusTreeView::~StylusTreeView()
+{
+	// std::cout << "\n\n StylusTreeView destructor called \n\n";
+}
+
+void StylusTreeView::createTree()
+{
+	selectedTreeNode = nullptr;
+	// tree root node
 	auto rootNode = std::make_unique<TreeNode>(stylusState_->selectedTemplate->ToElement()->Attribute("id"));
 	rootNode->move_up_btn->addStyleClass("hidden");
 	rootNode->move_down_btn->addStyleClass("hidden");
@@ -61,11 +74,7 @@ StylusTreeView::StylusTreeView(std::shared_ptr<StylusState> stylusState)
 	});
     setTreeRoot(std::move(rootNode));
 
-    createChildNodes();
-}
 
-void StylusTreeView::createChildNodes()
-{
     auto element = stylusState_->selectedTemplate->FirstChildElement();
     while(element){
 		selectedNodeFound = false;
@@ -81,17 +90,25 @@ void StylusTreeView::createChildNodes()
 
     }
 
-	if(selectedTreeNode){
+	if(selectedTreeNode != nullptr){
+		// std::cout << "\n selectedTreeNode found \n";
 		select(selectedTreeNode, true);
 	}else if(treeRoot()->childNodes().size() > 0) {
+		// std::cout << "\n\n selectedTreeNode not found \n\n";
 		select(treeRoot()->childNodes()[0],  true);
 		stylusState_->selectedElement = stylusState_->selectedTemplate->FirstChildElement();
+		selectionChanged_.emit(stylusState_->selectedElement);
+	}else {
+		select(treeRoot(), true);
+		stylusState_->selectedElement = stylusState_->selectedTemplate->ToElement();
 	}
 
 }
 
 std::unique_ptr<TreeNode> StylusTreeView::createNodeTree(tinyxml2::XMLElement* element)
 {
+
+	// std::cout << "\n StylusTreeView::createNodeTree \n";
 	auto node = std::make_unique<TreeNode>(element->Name());
 	auto nodePtr = node.get();
 	node->selected().connect(this, [=](){
@@ -155,7 +172,6 @@ std::unique_ptr<TreeNode> StylusTreeView::createNodeTree(tinyxml2::XMLElement* e
 	while (child) {
 		node->addChildNode(createNodeTree(child));
 		child = child->NextSiblingElement();
-
 	}
 
 	if(!selectedNodeFound)
@@ -167,7 +183,7 @@ std::unique_ptr<TreeNode> StylusTreeView::createNodeTree(tinyxml2::XMLElement* e
 // handle adding and removing elements
 void StylusTreeView::moveElementUp(tinyxml2::XMLElement* element)
 {
-
+	std::cout << "\n StylusTreeView::moveElementUp \n";
 	auto newElement = element->DeepClone(&stylusState_->doc);
 
 	if(element->PreviousSiblingElement()){
@@ -194,36 +210,36 @@ void StylusTreeView::moveElementUp(tinyxml2::XMLElement* element)
 		return;
 	}
 
-
 	stylusState_->selectedElement = newElement->ToElement();
 	removeElement(element);
 }
 
 void StylusTreeView::moveElementDown(tinyxml2::XMLElement* element)
 {
+	std::cout << "\n StylusTreeView::moveElementDown \n";
 	auto newElement = element->DeepClone(&stylusState_->doc);
 
 	if(!element->NextSiblingElement() && element->Parent() == stylusState_->selectedTemplate)
 		return;
 	else if(element->NextSiblingElement()){
 		element->Parent()->InsertAfterChild(element->NextSiblingElement(), newElement);
-
 	} else {
 		element->Parent()->Parent()->InsertAfterChild(element->Parent(), newElement);
 	}
-	stylusState_->selectedElement = newElement->ToElement();	
+	stylusState_->selectedElement = newElement->ToElement();
 	removeElement(element);
 }
 
 void StylusTreeView::moveElementRight(tinyxml2::XMLElement* element)
 {
+	std::cout << "\n StylusTreeView::moveElementRight \n";
 	auto newElement = element->DeepClone(&stylusState_->doc);
 	if(!element->NextSiblingElement()){
-		std::cout << "\n\n move element right got called but no next sibling \n\n";
+		std::cout << "\n StylusTreeView::moveElementRight but no next sibling \n";
 		return;
 	}
 	if(!element->NextSiblingElement()->FirstChildElement()){
-		std::cout << "\n\n move element right got called but next sibling has no child \n\n";
+		std::cout << "\n\n StylusTreeView::moveElementRight but next sibling has no child \n\n";
 		return;
 	}
 	
@@ -235,9 +251,8 @@ void StylusTreeView::moveElementRight(tinyxml2::XMLElement* element)
 
 void StylusTreeView::addSiblingElementBefore(tinyxml2::XMLElement* element, tinyxml2::XMLElement* newElement)
 {
-	std::cout << "\n\n add sibling element before got called \n\n";
+	std::cout << "\n StylusTreeView::addSiblingElementBefore \n";
 	if(newElement == nullptr){
-		// create element <div class="text-center">header</div>
 		newElement = stylusState_->doc.NewElement("div");
 		newElement->SetAttribute("class", "");
 		newElement->SetText("siblings before");
@@ -252,7 +267,7 @@ void StylusTreeView::addSiblingElementBefore(tinyxml2::XMLElement* element, tiny
 
 void StylusTreeView::addSiblingElementAfter(tinyxml2::XMLElement* element, tinyxml2::XMLElement* newElement)
 {
-	std::cout << "\n\n add sibling element after got called \n\n";
+	std::cout << "\n StylusTreeView::addSiblingElementAfter \n";
 	if(newElement == nullptr){
 		// create element <div class="text-center">header</div>
 		newElement = stylusState_->doc.NewElement("div");
@@ -265,7 +280,7 @@ void StylusTreeView::addSiblingElementAfter(tinyxml2::XMLElement* element, tinyx
 
 void StylusTreeView::addChildElementFirst(tinyxml2::XMLElement* element, tinyxml2::XMLElement* newElement)
 {
-	std::cout << "\n\n add child element first got called \n\n";
+	std::cout << "\nStylusTreeView::addChildElementFirst\n";
 	if(newElement == nullptr){
 		// create element <div class="text-center">header</div>
 		newElement = stylusState_->doc.NewElement("div");
@@ -274,24 +289,32 @@ void StylusTreeView::addChildElementFirst(tinyxml2::XMLElement* element, tinyxml
 	}
 	// add it to the selected element
 	element->InsertFirstChild(newElement);
+
+	if(element == stylusState_->selectedTemplate->ToElement()){
+		stylusState_->selectedElement = newElement;
+	}
 }
 
 void StylusTreeView::addChildElementLast(tinyxml2::XMLElement* element, tinyxml2::XMLElement* newElement)
 {
-	std::cout << "\n\n add child element last got called \n\n";	
+	std::cout << "\nStylusTreeView::addChildElementLast\n";	
 	if(newElement == nullptr){
 		// create element <div class="text-center">header</div>
 		newElement = stylusState_->doc.NewElement("div");
 		newElement->SetAttribute("class", "");
 		newElement->SetText("child after");
 	}
-
 	element->InsertEndChild(newElement);
+
+	if(element == stylusState_->selectedTemplate->ToElement()){
+		stylusState_->selectedElement = newElement;
+	}
+
 }
 
 void StylusTreeView::removeElement(tinyxml2::XMLElement* element)
 {
-	// std::cout << "\n\n remove element got called \n\n";
+	std::cout << "\n StylusTreeView::removeElement \n";
     stylusState_->doc.DeleteNode(element);
 	stylusState_->selectedElement = nullptr;
 }

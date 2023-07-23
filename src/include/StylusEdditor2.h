@@ -1,4 +1,7 @@
 #pragma once
+#include "StylusTreeView.h"
+#include "TailwindStyleClasses.h"
+
 #include <Wt/WTextArea.h>
 #include <Wt/WLineEdit.h>
 #include <Wt/WString.h>
@@ -6,18 +9,9 @@
 #include <Wt/WTemplate.h>
 #include "tinyxml2.h"
 #include <Wt/WDialog.h>
-#include "StylusTreeView.h"
 
-class StylusClassComboBox : public Wt::WContainerWidget
-{
-public:
-    StylusClassComboBox(std::vector<std::string> classNames);
-    Wt::WComboBox *comboBox_;
 
-private:
-    Wt::WPushButton *btn_next_;
-    Wt::WPushButton *btn_prev_;
-};
+
 
 
 class StylusEdditor2 : public Wt::WDialog
@@ -31,6 +25,7 @@ private:
     void parseMessageAndDoc();
 
     std::shared_ptr<StylusState> stylusState_;
+    ElementStyleClasses* elementStyleClasses_;
 
     Wt::WString sourcePath_ = "resources/xml/";
     Wt::WString templateName_ = "";
@@ -42,14 +37,15 @@ private:
     void createDialogContent();
     
     void nodeSelected(tinyxml2::XMLNode* node);
-    void setDisplayElement(tinyxml2::XMLElement* element);
+    void updateDisplayElement();
     
     void toggleOutline(bool on = true);
     bool outline_selected_on = true;    
 
-    void saveStyles();
+    void saveStyles(std::string newStyles);
 
     void updateFile();
     void updateView();
+
 
 };
