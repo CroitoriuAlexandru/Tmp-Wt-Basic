@@ -1,0 +1,44 @@
+/* Utility for outlining the selected element */
+.\?{
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #f16bc9;
+  box-shadow: inset 1px 1px #f16bc9, inset -1px -1px #f16bc9;
+  animation: \?wobble 0.6s ease-in-out alternate infinite;
+}
+
+@keyframes \?wobble{
+  0%{
+    outline-width: 1px;
+    outline-color: #f16bc9;
+    box-shadow: inset 1px 1px #f16bc9, inset -1px -1px #f16bc9;
+  }
+
+  100%{
+    outline-width: 1.5px;
+    outline-color: #f71fb6;
+    box-shadow: inset 1.5px 1.5px #f71fb6, inset -1.5px -1.5px #f71fb6;
+  }
+}
+
+/* scrollbar styles */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 0px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--primary);
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: 14px;
+    border: 3px solid var(--primary);
+}

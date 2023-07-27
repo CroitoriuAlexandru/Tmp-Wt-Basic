@@ -23,8 +23,10 @@
 #include "Wt/WSuggestionPopup.h"
 #include "Wt/WTabWidget.h"
 #include "Wt/WTimeEdit.h"
-
 #include <Wt/DomElement.h>
+#include <Wt/WTimer.h>
+#include <fstream>
+#include <Wt/WTime.h>
 
 #ifndef WT_DEBUG_JS
 // #include "js/CssThemeValidate.min.js"
@@ -51,9 +53,13 @@ std::vector<WLinkedCssStyleSheet> TailwindTheme::styleSheets() const
     std::string themeDir = resourcesUrl();
 
     WApplication *app = WApplication::instance();
+    result.push_back(WLinkedCssStyleSheet(WLink(themeDir + "wt.css")));
 
-    result.push_back(WLinkedCssStyleSheet(WLink(themeDir + "dist/tailwind.css")));
-    
+    if (app->environment().agentIsIElt(9))
+      result.push_back(WLinkedCssStyleSheet(WLink(themeDir + "wt_ie.css")));
+
+    if (app->environment().agent() == UserAgent::IE6)
+      result.push_back(WLinkedCssStyleSheet(WLink(themeDir + "wt_ie6.css")));
   }
 
   return result;
@@ -324,4 +330,3 @@ bool TailwindTheme::canBorderBoxElement(const DomElement& element) const
 {
   return true;
 }
-

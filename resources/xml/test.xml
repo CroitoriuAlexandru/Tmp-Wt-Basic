@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <messages>
     <message id="test">
-        <div class="m-4 my-0.5 mx-8 mb-3.5 ml-px p-0 pt-4 pr-8 pb-6 pl-2 text-center inline-block bg-red-100 border border-dashed">test element</div>
-        <div class="p-1 py-2 px-3">child before</div>
-        <div class="">child before</div>
+        <div class="p-px">child before</div>
+        <div class="ml-auto space-y-24 space-x-14 w-11/12 min-w-min max-w-prose h-96 min-h-min max-h-72  text-center inline-block bg-red-100 border border-dashed"><div class="?  p-9 m-28 mt-[calc(120px-20px)] min-w-full  ">child before</div>
+            <div class="">child before</div>test element</div>
+        <div class="m-0.5 p-px  border-solid">child before</div>
+        <div class="">siblings after</div>
+        <div class="m-auto">siblings after</div>
+        <div class="">siblings after</div>
+        <div class="p-[12px] space-x-8"><div class="">child before</div>
+            <div class="">siblings after</div>
+            <div class="">siblings after</div>
+            <div class="">siblings after</div>
+            <div class="">siblings after</div>
+            <div class="">siblings after</div>
+            <div class="">siblings after</div>siblings after</div>
     </message>
 </messages>
 

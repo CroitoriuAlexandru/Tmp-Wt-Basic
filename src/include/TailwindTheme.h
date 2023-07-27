@@ -1,6 +1,7 @@
 #pragma once
 #include <Wt/WTheme.h>
-
+#include <Wt/WSignal.h>
+#include <string>
 using namespace Wt;
 
 class WT_API TailwindTheme : public WTheme
@@ -50,7 +51,6 @@ public:
                                     WFlags<ValidationStyleFlag> styles) const override;
 
   virtual bool canBorderBoxElement(const DomElement& element) const override;
-
 private:
   std::string name_;
 };

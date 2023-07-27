@@ -3,12 +3,16 @@
     <message id="stylus.edditor.titlebar">
         <div class="flex items-center px-2 space-x-2 "> ${remove class="m-0 btn
             btn-danger"} <div class="border-l-2 border-solid ps-2 space-y-2">
-                ${add-child-before class="m-0 btn btn-success"}
-                ${add-child-after class="m-0 btn btn-success"}
+                ${add-child-before class="m-0 btn btn-success
+                bg-[resources/icons/url(right-arrow-square.svg)]"}
+                ${add-child-after class="m-0 btn
+                bg-[resources/icons/url(right-arrow-square.svg)]"}
             </div>
             <div class="border-l-2 border-solid ps-2 space-y-2">
-                ${add-sibling-before class="m-0 me-2 btn btn-dark"}
-                ${add-sibling-after class="m-0 me-4 btn btn-dark"}
+                ${add-sibling-before class="m-0 me-2 btn btn-dark
+                bg-[resources/icons/url(right-arrow-square.svg)]"}
+                ${add-sibling-after class="m-0 me-4 btn 
+                bg-[resources/icons/url(right-arrow-square.svg)]"}
             </div>
             <div class="self-stretch border border-solid ms-0 "/>
             <div class="relative inline-flex flex-col self-start ">
@@ -47,111 +51,157 @@
         </div>
     </message>
     <message id="stylus.edditor.content.display">
-        <div class="text-center">${title}</div> ${text-display class="h-full"} </message>
+        <div class="text-center">${title}</div> ${text-display class="h-full"} 
+    </message>
     <message id="stylus.sidebar.titlebar">
         <div class="relative">${stylus}</div>
         <div class="">${svg.plus class="btn p-1 m-1"}</div>
     </message>
     <message id="stylus.sidebar.content">
         <div class="relative">${stylus}</div>
-        <div class=""></div>
+        <div class=""/>
         <div class="">${container.wt class="p-0"}</div>
     </message>
-    <message id="stylus.sidebar.folder.item">
+    <!-- <message id="stylus.sidebar.folder.item">
         <div class="-mx-2">
             <div class="flex items-center">${svg.trash class="btn btn-danmger p-1 m-1"}
             ${title}
             ${svg.pencil class="btn p-1 m-1 ms-auto"}</div>
         </div>
-    </message>
+    </message> -->
     <message id="stylus.edditor.class.view">
         <div class="">${stylus}</div>
-        <div class="bg-yellow-100 p-3">${stylus.class.padding}</div>
+        <div class="p-3">${stylus.class.padding}</div>
     </message>
     <message id="stylus2.edditor">
-        <div class="flex items-center justify-between border-b border-solid">
-            ${move-left-btn class="bg-[url(left-arrow-square.svg)] !p-3 rounded-none !m-0 bg-cover"}
-            ${refresh-btn class="bg-[url(refresh.svg)] !p-3 rounded-full !m-0 bg-cover !ms-auto"}
-            ${move-right-btn class="bg-[url(right-arrow-square.svg)] !p-3 rounded-none !m-0 bg-cover"}
+        <div class="flex items-center justify-between border-b border-solid border-neutral-900">
+            ${move-left-btn class="bg-[url(resources/icons/left-arrow-square.svg)] !p-3 rounded-none
+            !m-0 bg-cover"}
+            ${theme-switcher-btn class="!p-2.5 rounded-full !my-0 !ms-auto !mr-2 bg-cover"}
+            ${move-right-btn class="bg-[url(resources/icons/right-arrow-square.svg)] !p-3
+            rounded-none !m-0 bg-cover"}
         </div>
         <div class="min-h-[200px] overflow-auto border-b border-solid resize-y">
-            ${tree-view class=""}
+            ${tree-view class="h-fit"}
         </div>
         <div class="">
-            ${stylus2.edditor.margin.padding class="px-6"}
+            ${stylus2.element.edditor class="px-6"}
         </div>
     </message>
-    <message id="stylus2.edditor.margin.padding">
-        <div class="w-full mb-4 text-xs flex flex-col items-center">
-            <div class="mb-2 self-stretch">
-                <div class="flex justify-between">
-                    <div class="font-bold ms-5">Margin</div>
-                    <div class="font-bold me-5">Padding</div>
+
+    <message id="stylus2.element.edditor">
+        ${stylus2.sizing.template class="w-full text-xs flex flex-col items-stretch text-neutral-400"}
+        <div class="border-b border-solid border-neutral-900"></div>
+        ${stylus2.spacing.template class="w-full text-xs flex flex-col items-stretch text-neutral-400"}
+    </message>
+
+    <message id="stylus2.sizing.template">
+        <div class="flex justify-between space-x-2 -mx-2">
+
+            <div class="flex flex-col justify-start items-stretch w-1/2">
+                <div class="font-bold text-center w-full text-neutral-500">Width</div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${width.control class="w-full mb-1 mx-auto"}
                 </div>
-                <div class="relative flex justify-between">
-                    <div class="flex w-fit rounded-md border bg-gray-50">
-                        ${margin.all.control class="flex items-stretch justify-center"}
-                    </div>
-                    <div class="font-bold">All sides</div>
-                    <div class="flex w-fit rounded-md border bg-gray-50">
-                        ${padding.all.control class="flex items-stretch justify-center"}
-                    </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${width.min.control class="w-full mb-1 mx-auto"}
                 </div>
-                <div class="relative mt-1 flex justify-between">
-                    <div class="flex w-fit rounded-md border bg-gray-50">
-                        ${margin.vertical.control class="flex items-stretch justify-center"}
-                    </div>
-                    <div class="font-bold">Vertical</div>
-                    <div class="flex w-fit rounded-md border bg-gray-50">
-                        ${padding.vertical.control class="flex items-stretch justify-center"}
-                    </div>
-                </div>
-                <div class="relative mt-1 flex justify-between">
-                    <div class="flex w-fit rounded-md border bg-gray-50">
-                        ${margin.horizontal.control class="flex items-stretch justify-center"}
-                    </div>
-                    <div class="font-bold">Horizontal</div>
-                    <div class="flex w-fit rounded-md border bg-gray-50">
-                        ${padding.horizontal.control class="flex items-stretch justify-center"}
-                    </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${width.max.control class="w-full mb-1 mx-auto"}
                 </div>
             </div>
-            <div class="p-px w-fit">
-                <div class="h-[130px] w-[200px] pt-3 pb-4">
-                    <div class="relative h-full w-full border-[5px] border-dashed border-gray-400 flex flex-col justify-between items-stretch">
-                        <div class="flex flex-col w-fit mx-auto -mt-7">
-                            <div class="flex rounded-md border bg-gray-50 mb-1">
-                                ${margin.top.control class="flex justify-center"}
-                            </div>
-                            <div class="flex rounded-md border bg-gray-50">
-                                ${padding.top.control class="flex justify-center"}
-                            </div>
-                        </div>
-                        <div class="-mx-12 flex justify-between">
-                            <div class="flex rounded-md border bg-gray-50">
-                                ${margin.right.control class="flex justify-center"}
-                            </div>
-                            <div class="flex rounded-md border bg-gray-50">
-                                ${margin.left.control class="flex justify-center"}
-                            </div>
-                        </div>
-                        <div class="-mx-6 flex justify-between">
-                            <div class="flex rounded-md border bg-gray-50">
-                                ${padding.left.control class="flex justify-center"}
-                            </div>
-                            <div class="flex rounded-md border bg-gray-50">
-                                ${padding.right.control class="flex justify-center"}
-                            </div>
-                        </div>
-                        <div class="flex flex-col w-fit mx-auto -mb-7">
-                            <div class="flex rounded-md border bg-gray-50 mb-1">
-                                ${margin.bottom.control class="flex justify-center"}
-                            </div>
-                            <div class="flex rounded-md border bg-gray-50">
-                                ${padding.bottom.control class="flex justify-center"}
-                            </div>
-                        </div>
-                    </div>
+
+            <div class="flex flex-col items-stretch w-1/2">
+                <div class="font-bold text-center w-full text-neutral-500">Height</div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${height.control class="w-full mb-1 mx-auto"}
+                </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${height.min.control class="w-full mb-1 mx-auto"}
+                </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${height.max.control class="w-full mb-1 mx-auto"}
+                </div>
+            </div>
+        </div>
+    </message>
+
+    <message id="stylus2.spacing.template">
+        <div class="flex justify-between space-x-4">
+
+            <div class="flex flex-col justify-start items-stretch w-1/2">
+                <div class="font-bold text-center w-full text-neutral-500">Margin</div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${margin.all.control class="w-full mb-1 mx-auto"}
+                </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${margin.vertical.control class="w-full mb-1 mx-auto"}
+                </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${margin.horizontal.control class="w-full mb-1 mx-auto"}
+                </div>
+            </div>
+
+            <div class="flex flex-col items-stretch w-1/2">
+                <div class="font-bold text-center w-full text-neutral-500">Padding</div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${padding.all.control class="w-full mb-1 mx-auto"}
+                </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${padding.vertical.control class="w-full mb-1 mx-auto"}
+                </div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${padding.horizontal.control class="w-full mb-1 mx-auto"}
+                </div>
+            </div>
+        </div>
+
+        <div class="relative my-8 mx-auto min-h-[90px] w-4/5 border-[4px] border-dashed border-neutral-500 flex flex-col justify-between items-stretch">
+            <div class="flex mb-2 flex-col w-fit mx-auto -mt-6">
+                <div class="mb-1 flex rounded-md border bg-neutral-700">
+                    ${margin.top.control class="flex justify-center"}
+                </div>
+                <div class="p-px flex rounded-md border bg-neutral-700">
+                    ${padding.top.control class="flex justify-center"}
+                </div>
+            </div>
+            <div class="-mx-12 mb-2 flex justify-between">
+                <div class="flex rounded-md border bg-neutral-700">
+                    ${margin.left.control class="flex justify-center"}
+                </div>
+                <div class="flex rounded-md border bg-neutral-700">
+                    ${margin.right.control class="flex justify-center"}
+                </div>
+            </div>
+            <div class="-mx-6 mb-2 flex justify-between">
+                <div class="flex rounded-md border bg-neutral-700">
+                    ${padding.left.control class="flex justify-center"}
+                </div>
+                <div class="flex rounded-md border bg-neutral-700">
+                    ${padding.right.control class="flex justify-center"}
+                </div>
+            </div>
+            <div class="flex flex-col w-fit mx-auto -mb-6">
+                <div class="flex rounded-md border bg-neutral-700 mb-1">
+                    ${margin.bottom.control class="flex justify-center"}
+                </div>
+                <div class="flex rounded-md border bg-neutral-700">
+                    ${padding.bottom.control class="flex justify-center"}
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between space-x-4">
+            <div class="flex flex-col justify-start items-stretch w-1/2">
+                <div class="font-bold w-full text-center text-neutral-500">Space X ${space.vertical.reverse.controle class=""}</div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${space.vertical.control class="w-full"}
+                </div>
+            </div>
+            <div class="flex flex-col items-end w-1/2">
+                <div class="font-bold w-full text-center text-neutral-500">Space Y ${space.horizontal.reverse.controle class=""}</div>
+                <div class="flex w-full max-w-[130px] rounded-md border bg-neutral-700">
+                    ${space.horizontal.control class="w-full"}
                 </div>
             </div>
         </div>

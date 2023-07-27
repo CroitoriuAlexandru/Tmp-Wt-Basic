@@ -8,7 +8,8 @@ TreeNode::TreeNode(const Wt::WString& labelText, std::unique_ptr<Wt::WIconPair> 
 	label()->setTextFormat(Wt::TextFormat::Plain);
 	expand();
 
-	labelArea()->setStyleClass("flex flex-row items-center");
+	labelArea()->setStyleClass("flex flex-row items-center justify-center text-neutral-300");
+
 	// auto labelAreaStart = labelArea()->insertAfter(std::make_unique<Wt::WContainerWidget>(), label());
 	auto labelAreaStart = labelArea()->addWidget(std::make_unique<Wt::WContainerWidget>());
 	auto labelAreaEnd = labelArea()->addWidget(std::make_unique<Wt::WContainerWidget>());
@@ -22,17 +23,17 @@ TreeNode::TreeNode(const Wt::WString& labelText, std::unique_ptr<Wt::WIconPair> 
 	add_sibling_before_btn = labelAreaEnd->addWidget(std::make_unique<Wt::WPushButton>(""));
 	add_sibling_after_btn = labelAreaEnd->addWidget(std::make_unique<Wt::WPushButton>(""));
 
-	labelAreaEnd->setStyleClass("ms-auto");
-	labelAreaStart->setStyleClass("me-auto");
-	Wt::WString btns_styles = "!p-2 !my-0 !ms-0 bg-cover rounded full bg-opacity-20 inline ";
-	remove_btn->addStyleClass(btns_styles + " bg-[url(trash.svg)]");
-	move_right_btn->addStyleClass(btns_styles + " bg-[url(arrow-right-down.svg)] me-2");
-	move_up_btn->addStyleClass(btns_styles + " bg-[url(arrow-up.svg)] me-2");
-	move_down_btn->addStyleClass(btns_styles + " bg-[url(arrow-down.svg)] me-2");
-	add_sibling_after_btn->addStyleClass(btns_styles + " bg-[url(parent.svg)] me-2");
-	add_sibling_before_btn->addStyleClass(btns_styles + " bg-[url(parent.svg)] me-2");
-	add_child_first_btn->addStyleClass(btns_styles + " bg-[url(kid.svg)] me-2");
-	add_child_last_btn->addStyleClass(btns_styles + " bg-[url(kid.svg)] me-2");
+	labelAreaEnd->setStyleClass("ms-auto flex items-center");
+	labelAreaStart->setStyleClass("me-auto flex items-center");
+	Wt::WString btns_styles = "!p-2 !my-0 !ms-0 bg-cover bg-no-repeat inline ";
+	remove_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/trash.svg)] me-0 sticky left-0");
+	move_right_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/arrow-right-down.svg)] bg-neutral-300 rounded-full");
+	move_up_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/arrow-up.svg)] me-2 bg-neutral-300 rounded-full");
+	move_down_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/arrow-down.svg)] me-2 bg-neutral-300 rounded-full");
+	add_sibling_after_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/parent.svg)] me-2");
+	add_sibling_before_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/parent.svg)] me-2");
+	add_child_first_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/kid.svg)] me-2");
+	add_child_last_btn->addStyleClass(btns_styles + " bg-[url(resources/icons/kid.svg)] me-2");
 
 }
 
@@ -42,7 +43,7 @@ StylusTreeView::StylusTreeView(std::shared_ptr<StylusState> stylusState)
 {
     // set defaults
 	setSelectionMode(Wt::SelectionMode::Single);
-	addStyleClass("w-auto h-auto");
+	addStyleClass("w-auto h-fit");
 
 
 }
