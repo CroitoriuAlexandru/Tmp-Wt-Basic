@@ -42,7 +42,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
 	$(CC) $(CXXFLAGS) -o $@ -c $<
 
 ################## Run #################
-r:
+run:
 	./$(APPNAME) $(RLIB)
 
 dbg:
