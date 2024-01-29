@@ -1,16 +1,3 @@
-# Template Wt app with Theme and Navigation
-
-## Instalation of dependencies
-Just folow the Dockerfile instructions and you are golden with one exception, the Wt libraries may not link after the install and there are two fixes for that
-1. run the next command to dynamicly link to those binaries 
-~~~
-export LD_LIBRARY_PATH=/usr/local/lib/
-~~~
-2. run the next command to copy the wt library files from /usr/local/lib/ to /usr/lib/
-~~~ 
-cp /usr/local/lib/libwt*.so.* /usr/lib/
-~~~
-
 ## Install Wt on Windows
 https://redmine.emweb.be/projects/wt/wiki/Installing_Wt_on_MS_Windows
 
