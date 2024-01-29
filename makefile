@@ -1,24 +1,25 @@
 # Compiler settings
 CC = g++
-CXXFLAGS = -std=c++14 -I. -DICE_CPP11_MAPPING -g
+CXXFLAGS = -std=c++17 -I. -g
 
 # Makefile settings
 APPNAME = app
 EXT = .cpp
 SRCDIR = ./src
-OBJDIR = ./src/obj
-DBONAME = test.db
+
+# preview widgets
+OBJDIR = ./obj
+
 # Linking lib
 LDFLAGS =  -lwthttp -lwt -lwtdbo -lwtdbosqlite3 -lpthread
 
 # Runtime lib
 RLIB = --docroot . -c ./wt_config.xml --http-address 0.0.0.0 --http-port 9090
 
-
 ############## Creating variables #############
-SRC = $(wildcard $(SRCDIR)/*$(EXT))
+SRC = $(wildcard $(SRCDIR)/*$(EXT)) 
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
-DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
+DEP = $(OBJ:$(OBJDIR)/%.o=$(OBJDIR)/%.d)
 
 ########################################################################
 ####################### Targets beginning here #########################
@@ -27,12 +28,12 @@ DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
 all: $(APPNAME)
 
 # Builds the app
-$(APPNAME): $(OBJ)
+$(APPNAME): $(OBJ) 
 	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 # Creates the dependecy rules
-%.d: $(SRCDIR)/%$(EXT)
-	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
+$(OBJDIR)/%.d: $(SRCDIR)/%$(EXT)
+	@$(CXX) $(CXXFLAGS) $< -MM -MT $(@:.d=.o) >$@
 
 # Includes all .h files
 -include $(DEP)
@@ -48,14 +49,21 @@ run:
 dbg:
 	gdb ./$(APPNAME)
 
+.PHONY: gen_obj_dir
+gen_obj_dir:
+	mkdir -p $(OBJDIR)
+
 ################### Cleaning rules ###################
 # Cleans complete project
 .PHONY: clean
 clean:
-	$(RM) $(APPNAME) $(DEP) $(OBJ) $(DBONAME) 
+	$(RM) $(APPNAME) $(DEP) $(OBJ)
+
+cleanDependencies:
+	$(RM) $(DEP)
 
 ################### Display variables ###################
-displayVariables:
-	@echo $(SRC)
-	@echo $(OBJ)
-	@echo $(DEP)
+echo:
+	@for dep in $(DEP); do \
+		echo $$dep; \
+	done
